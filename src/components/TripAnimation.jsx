@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import DelayedPageTransition from "./idk";
 export const TripAnimation = () => {
   const [animate, setAnimate] = useState(false);
 
@@ -6,8 +7,10 @@ export const TripAnimation = () => {
     // Trigger animation after the component mounts
     setAnimate(true);
   }, []);
+  
   return (
     <div className={`section ${animate ? "animate" : ""}`}>
+      <DelayedPageTransition />
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
