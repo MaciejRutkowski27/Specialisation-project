@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-export default function TripAnimation() {
+export const TripAnimation = () => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     // Trigger animation after the component mounts
     setAnimate(true);
   }, []);
-
   return (
     <div className={`section ${animate ? "animate" : ""}`}>
       <svg
@@ -172,4 +171,4 @@ m-126 -550 c30 -136 46 -257 39 -294 -4 -21 -11 -26 -26 -24 -32 5 -58 85 -64
       </svg>
     </div>
   );
-}
+};
