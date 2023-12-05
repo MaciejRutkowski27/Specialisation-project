@@ -10,6 +10,7 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { CreatePage } from "./pages/CreatePage";
 import { SignInPage } from "./pages/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage";
+import { TripAnimation } from "./components/TripAnimation";
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
@@ -46,6 +47,7 @@ export default function App() {
   // variable holding all public routes without nav bar
   const publicRoutes = (
     <Routes>
+      <Route path="/animation" element={<TripAnimation />} />
       <Route path="/sign-in" element={<SignInPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="*" element={<Navigate to="/sign-in" />} />
