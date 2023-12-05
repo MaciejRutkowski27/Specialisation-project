@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-export default function TripSimple() {
+export default function TripAnimation() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
