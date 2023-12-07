@@ -37,12 +37,12 @@ export const SignUpPage = () => {
   }
 
   return (
-    <section className="general_margin container">
+    <section className="container">
       <img className="png" src="/src/assets/tripsimplelogo.PNG" />
       <h1>Sign up</h1>
-      <form onSubmit={handleSignUp}>
+      <form className="signupform" onSubmit={handleSignUp}>
         <input
-          className="input_field"
+          className="field"
           type="text"
           value={username}
           onChange={(e) => setUserName(e.target.value)}
@@ -50,19 +50,25 @@ export const SignUpPage = () => {
           placeholder="Username"
         />
         <input
-          className="input_field"
+          className="field"
           type="email"
           name="mail"
           placeholder="Type your mail"
         />
         <input
-          className="input_field"
+          className="field"
           type="password"
           name="password"
           placeholder="Type your password"
         />
         <p className="text-error">{errorMessage}</p>
-        <button>Sign Up</button>
+        <p>or continue with</p>
+        <div className="icons">
+          <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/google.png?alt=media&token=ee6da16b-6043-424b-bd66-ecccdca6b719" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/facebook.png?alt=media&token=c895a6e4-f96c-4b5b-b94b-5d1700fe77c5" />
+          <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/apple.png?alt=media&token=001a2c0f-87e3-46cc-8997-b3a66acf54c1" />
+        </div>
+        <button className="signin">Sign up</button>
       </form>
       <p className="text-center">
         Already have an account? <Link to="/sign-in">Sign In</Link>

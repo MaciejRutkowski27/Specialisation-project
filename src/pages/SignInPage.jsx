@@ -28,29 +28,35 @@ export const SignInPage = () => {
   }
 
   return (
-    <section className="general_margin container">
+    <section className="container">
       <img className="png" src="/src/assets/tripsimplelogo.PNG" />
       <h1>Sign in</h1>
 
-      <form onSubmit={signIn}>
+      <form className="signinform" onSubmit={signIn}>
         <input
-          className="input_field"
+          className="field"
           type="email"
           name="mail"
-          placeholder="Type your e-mail"
+          placeholder="Type your e-mail or username"
         />
         <input
-          className="input_field"
+          className="field"
           type="password"
           name="password"
           placeholder="Type your password"
         />
         <p className="text-error">{errorMessage}</p>
-        <button>Sign in</button>
+        <p>or continue with</p>
+        <div className="icons">
+        <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/google.png?alt=media&token=ee6da16b-6043-424b-bd66-ecccdca6b719" />
+        <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/facebook.png?alt=media&token=c895a6e4-f96c-4b5b-b94b-5d1700fe77c5" />
+        <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/apple.png?alt=media&token=001a2c0f-87e3-46cc-8997-b3a66acf54c1" />
+        </div>
+        <button className="signin">Sign in</button>
       </form>
 
       <p className="text-center">
-        Don&apos;t have an account? <Link to="/sign-up">Sign Up</Link>
+        Don&apos;t have an account? <Link to="/sign-up">Sign up here</Link>
       </p>
     </section>
   );
