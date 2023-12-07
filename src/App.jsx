@@ -49,8 +49,8 @@ export default function App() {
     <Routes>
       <Route path="/animation" element={<TripAnimation />} />
       <Route path="/sign-in" element={<SignInPage />} />
-      <Route path="/sign-up" element={<SignUpPage />} />
-      <Route path="/" element={<Navigate to="/animation" />} />
+      <Route path="/" element={<SignUpPage />} />
+      <Route path="*" element={<Navigate to="/animation" />} />
     </Routes>
   );
 
