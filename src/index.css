@@ -34,7 +34,11 @@ button {
   font-size: 1rem;
   font-family: inherit;
   font-weight: 500;
+  border-width: 0px;
   background-color: var(--yellow);
   padding: 0.5rem 2rem;
   border-radius: 20px;
+}
+input {
+  border-width: 0px;
 }

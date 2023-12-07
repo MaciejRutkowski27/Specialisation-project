@@ -68,7 +68,7 @@ export const SignUpPage = () => {
           <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/facebook.png?alt=media&token=c895a6e4-f96c-4b5b-b94b-5d1700fe77c5" />
           <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/apple.png?alt=media&token=001a2c0f-87e3-46cc-8997-b3a66acf54c1" />
         </div>
-        <button className="signin">Sign up</button>
+        <button>Sign up</button>
       </form>
       <p className="text-center">
         Already have an account? <Link to="/sign-in">Sign In</Link>
