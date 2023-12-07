@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import "./config/Firebase";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
-import { Navigation } from "./components/Navigation";
 import { HomePage } from "./pages/HomePage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { CreatePage } from "./pages/CreatePage";
 import { SignInPage } from "./pages/SignInPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { TripAnimation } from "./components/TripAnimation";
+import { MapPage } from "./pages/MapPage";
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
@@ -34,11 +34,11 @@ export default function App() {
   // variable holding all private routes including the nav bar
   const privateRoutes = (
     <>
-      <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/map" element={<MapPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
