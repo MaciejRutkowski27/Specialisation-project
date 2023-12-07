@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import { Navigation } from "../components/Navigation";
 
-export const HomePage = () => {
+export const MapPage = () => {
   return (
     <div>
       <Navigation />
-      <Link to="/profile">Profile</Link>
+      <h1>Map</h1>
     </div>
   );
 };
