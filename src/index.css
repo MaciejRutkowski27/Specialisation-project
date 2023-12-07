@@ -1,4 +1,44 @@
+/* import font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
+}
+
+/* General styling by Nina */
+:root {
+  --background: #0c1d36;
+  --white: #fffbdb;
+  --yellow: #f5ba41;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--background);
+}
+
+.general_margin {
+  margin: 2.75rem 1rem 0 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
+button {
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  background-color: var(--yellow);
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
 }

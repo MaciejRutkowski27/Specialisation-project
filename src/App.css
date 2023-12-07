@@ -1,31 +1,16 @@
-.signpage {
-  background-color: #0C1D36;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.png {
-  height: 200px;
-  width: 300px;
-}
-.text {
-  font-size: 50px;
-}
 /*Animation styling */
 /* Container */
 .section {
-  background-color: #0C1D36;
+  background-color: var(--background);
   height: 100%;
   display: grid;
   place-items: center;
 }
 /* SVG image of the logo */
 svg#svglogo {
-  z-index: 100; 
+  z-index: 100;
   display: block;
-  margin:0 auto;
+  margin: 0 auto;
   grid-column: 1;
   grid-row: 1;
 }
@@ -38,9 +23,9 @@ svg#svglogo {
   transform-origin: left;
 }
 .logoanimation {
-  fill: #F5BA41;
+  fill: #f5ba41;
   fill-opacity: 0;
-  stroke: #F5BA41;
+  stroke: #f5ba41;
   stroke-width: 10px;
   stroke-dasharray: 70000px;
   stroke-dashoffset: 70000px;
@@ -50,9 +35,9 @@ svg#svglogo {
   z-index: 3;
 }
 .logoanimation1 {
-  fill: #F5BA41;
+  fill: #f5ba41;
   fill-opacity: 0;
-  stroke: #F5BA41;
+  stroke: #f5ba41;
   stroke-width: 10px;
   stroke-dasharray: 70000px;
   stroke-dashoffset: 70000px;
@@ -67,7 +52,7 @@ svg#svglogo {
     stroke-dashoffset: 70000px;
     fill-opacity: 0;
   }
-  35%{
+  35% {
     fill-opacity: 0;
   }
   100% {
@@ -75,4 +60,3 @@ svg#svglogo {
     fill-opacity: 1;
   }
 }
-

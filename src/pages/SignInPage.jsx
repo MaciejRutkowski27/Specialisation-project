@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
+import "./sign.css";
 
 export const SignInPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -8,8 +9,8 @@ export const SignInPage = () => {
 
   function signIn(event) {
     event.preventDefault();
-    const mail = event.target.mail.value; // mail value from inout field in sign in form
-    const password = event.target.password.value; // password value from inout field in sign in form
+    const mail = event.target.mail.value;
+    const password = event.target.password.value;
 
     signInWithEmailAndPassword(auth, mail, password)
       .then((userCredential) => {
@@ -27,13 +28,19 @@ export const SignInPage = () => {
   }
 
   return (
-    <div className="signpage">
+    <section className="general_margin container">
       <img className="png" src="/src/assets/tripsimplelogo.PNG" />
-      <p className="text">Sign in</p>
+      <h1>Sign in</h1>
 
       <form onSubmit={signIn}>
-        <input type="email" name="mail" placeholder="Type your mail" />
         <input
+          className="input_field"
+          type="email"
+          name="mail"
+          placeholder="Type your e-mail"
+        />
+        <input
+          className="input_field"
           type="password"
           name="password"
           placeholder="Type your password"
@@ -45,6 +52,6 @@ export const SignInPage = () => {
       <p className="text-center">
         Don&apos;t have an account? <Link to="/sign-up">Sign Up</Link>
       </p>
-    </div>
+    </section>
   );
 };

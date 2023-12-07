@@ -3,19 +3,19 @@ import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { usersRef } from "../config/Firebase";
+import "./sign.css";
 
 export const SignUpPage = () => {
-  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const auth = getAuth();
 
   function handleSignUp(event) {
     event.preventDefault();
-    const mail = event.target.mail.value; // mail value from inout field in sign in form
-    const password = event.target.password.value; // password value from inout field in sign in form
+    const mail = event.target.mail.value;
+    const password = event.target.password.value;
 
-    // read the docs: https://firebase.google.com/docs/auth/web/password-auth#create_a_password-based_account
     createUserWithEmailAndPassword(auth, mail, password)
       .then((userCredential) => {
         // Created and signed in
@@ -33,21 +33,30 @@ export const SignUpPage = () => {
 
   function createUser(id) {
     const docRef = doc(usersRef, id);
-    setDoc(docRef, { name });
+    setDoc(docRef, { username });
   }
 
   return (
-    <div>
+    <section className="general_margin container">
+      <img className="png" src="/src/assets/tripsimplelogo.PNG" />
+      <h1>Sign up</h1>
       <form onSubmit={handleSignUp}>
         <input
+          className="input_field"
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          name="name"
-          placeholder="Type your name"
+          value={username}
+          onChange={(e) => setUserName(e.target.value)}
+          name="username"
+          placeholder="Username"
         />
-        <input type="email" name="mail" placeholder="Type your mail" />
         <input
+          className="input_field"
+          type="email"
+          name="mail"
+          placeholder="Type your mail"
+        />
+        <input
+          className="input_field"
           type="password"
           name="password"
           placeholder="Type your password"
@@ -58,6 +67,6 @@ export const SignUpPage = () => {
       <p className="text-center">
         Already have an account? <Link to="/sign-in">Sign In</Link>
       </p>
-    </div>
+    </section>
   );
 };
