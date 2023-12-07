@@ -38,7 +38,10 @@ export const SignUpPage = () => {
 
   return (
     <section className="container">
-      <img className="png" src="/src/assets/tripsimplelogo.PNG" />
+      <img
+        className="png"
+        src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/tripsimplelogo.PNG?alt=media&token=0e996dcc-39a1-479f-a9c5-b1b0fa8f245b"
+      />
       <h1>Sign up</h1>
       <form className="signupform" onSubmit={handleSignUp}>
         <input
