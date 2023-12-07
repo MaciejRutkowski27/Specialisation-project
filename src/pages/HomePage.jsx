@@ -1,3 +1,9 @@
+import { Link } from "react-router-dom";
+
 export const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <Link to="/profile">Profile</Link>
+    </div>
+  );
 };
