@@ -1,66 +1,22 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 /*Animation styling */
 /* Container */
 .section {
   background-color: #0C1D36;
-  height: 100%;
-  display: grid;
-  place-items: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* SVG image of the logo */
 svg#svglogo {
   z-index: 100; 
-  display: block;
-  margin:0 auto;
-  grid-column: 1;
-  grid-row: 1;
 }
 
 /* SVG styling and animation */
 .logoanimation2 {
-  height: 600px;
-  width: 650px;
+  height: 60px;
+  width: 65px;
   z-index: 1;
   transform-origin: left;
 }
@@ -72,8 +28,8 @@ svg#svglogo {
   stroke-dasharray: 70000px;
   stroke-dashoffset: 70000px;
   animation: type 2s 1 forwards ease-in;
-  height: 600px;
-  width: 600px;
+  height: 60px;
+  width: 60px;
   z-index: 3;
 }
 .logoanimation1 {
@@ -84,8 +40,8 @@ svg#svglogo {
   stroke-dasharray: 70000px;
   stroke-dashoffset: 70000px;
   animation: type 2s 1 forwards ease-in;
-  height: 600px;
-  width: 600px;
+  height: 60px;
+  width: 60px;
   z-index: 1000;
 }
 /* Animation stages */
@@ -102,4 +58,19 @@ svg#svglogo {
     fill-opacity: 1;
   }
 }
+.field {
+  background-color: #FFFBDB;
+  height: 50px;
+  width: 75%;
+  margin-bottom: 15%;
+  border-radius: 20px;
+  color: #868C89;
+  padding-left: 10px;
+}
 
+@media only screen and (max-width: 900px) {
+  .logoanimation, .logoanimation1, .logoanimation2 {
+    width: 40px;
+    height: 40px;
+  }
+}
