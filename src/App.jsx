@@ -44,7 +44,7 @@ export default function App() {
     </>
   );
 
-  // variable holding all public routes without nav bar
+  // variable holding all public routes
   const publicRoutes = (
     <Routes>
       <Route path="/animation" element={<TripAnimation />} />
