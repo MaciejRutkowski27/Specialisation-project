@@ -1,8 +1,8 @@
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { serverTimestamp, addDoc } from "firebase/firestore";
-import { tripsRef } from "../config/Firebase";
+import { useState, useEffect } from "react";
+import { serverTimestamp, addDoc, onSnapshot } from "firebase/firestore";
+import { tripsRef, usersRef } from "../config/Firebase";
 import imgPlaceholder from "../assets/placeholder.webp";
 
 import "./createPage.css";
@@ -14,15 +14,42 @@ export const CreatePage = () => {
   // all the states
   const [image, setImage] = useState("");
   const [destination, setDestination] = useState("");
+  const [name, setName] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [friends, setFriends] = useState([]);
+  const [addedFriends, setAddedFriends] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
+  // creating the trip
   async function createTrip(newTrip) {
     newTrip.createdAt = serverTimestamp(); // timestamp (now)
-
-    newTrip.uid = auth.currentUser.uid; // authenticated user id
-    await addDoc(tripsRef, newTrip); // add new doc - new post object
-
+    newTrip.uid = auth.currentUser.uid;
+    await addDoc(tripsRef, newTrip);
     navigate("/");
+  }
+
+  useEffect(() => {
+    onSnapshot(usersRef, (data) => {
+      const friendsData = data.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setFriends(friendsData);
+    });
+  }, []);
+
+  function handleAddButton(id) {
+    // Assuming friends is an array of objects with an id property
+    const friendToAdd = friends.find((friend) => friend.id === id);
+
+    if (friendToAdd) {
+      // If a friend with the given id is found, add it to addedFriends
+      const addedArray = [...addedFriends, friendToAdd];
+      setAddedFriends(addedArray);
+    } else {
+      console.error(`Friend with id ${id} not found.`);
+    }
   }
 
   function handleImageChange(event) {
@@ -34,9 +61,9 @@ export const CreatePage = () => {
         setImage(event.target.result);
       };
       reader.readAsDataURL(file);
-      setErrorMessage(""); // reset errorMessage state
+      setErrorMessage("");
     } else {
-      // if not below 0.5MB display an error message using the errorMessage state
+      // if the image size is too big, setting error message
       setErrorMessage("The image file is too big!");
     }
   }
@@ -44,17 +71,23 @@ export const CreatePage = () => {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = {
-      // create a new objebt to store the value from states / input fields
       image: image,
       destination: destination,
+      name: name,
+      startDate: startDate,
+      endDate: endDate,
+      addedFriends: addedFriends,
     };
 
-    const validForm = formData.destination && formData.image; // will return false if one of the properties doesn't have a value
+    const validForm =
+      formData.destination &&
+      formData.image &&
+      formData.name &&
+      formData.startDate &&
+      formData.endDate;
     if (validForm) {
-      // if all fields/ properties are filled, then call savePost
       createTrip(formData);
     } else {
-      // if not, set errorMessage state.
       setErrorMessage("Please, fill in all fields.");
     }
   }
@@ -72,7 +105,31 @@ export const CreatePage = () => {
           />
         </label>
         <label>
-          Image
+          Give your trip a name
+          <input
+            type="text"
+            value={name}
+            placeholder="My trip to New York"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label>
+          Choose the dates
+          <input
+            type="date"
+            value={startDate}
+            placeholder="mm-dd-yyyy"
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+          <input
+            type="date"
+            value={endDate}
+            placeholder="mm-dd-yyyy"
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+        </label>
+        <label>
+          Choose an image for your trip (optional)
           <input
             type="file"
             className="file-input"
@@ -86,6 +143,15 @@ export const CreatePage = () => {
             onError={(event) => (event.target.src = imgPlaceholder)}
           />
         </label>
+        <h3>Add friends</h3>
+        {friends.map((friend) => (
+          <div key={friend.id}>
+            <p>{friend.username}</p>
+            <button type="button" onClick={() => handleAddButton(friend.id)}>
+              Add
+            </button>
+          </div>
+        ))}
         <p className="text-error">{errorMessage}</p>
         <button type="submit">Save</button>
       </form>
