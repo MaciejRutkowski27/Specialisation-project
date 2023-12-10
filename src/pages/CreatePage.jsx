@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { serverTimestamp, addDoc, onSnapshot } from "firebase/firestore";
 import { tripsRef, usersRef } from "../config/Firebase";
-import imgPlaceholder from "../assets/placeholder.webp";
 
 import "./createPage.css";
 
@@ -12,7 +11,6 @@ export const CreatePage = () => {
   const navigate = useNavigate();
 
   // all the states
-  const [image, setImage] = useState("");
   const [destination, setDestination] = useState("");
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -25,8 +23,15 @@ export const CreatePage = () => {
   async function createTrip(newTrip) {
     newTrip.createdAt = serverTimestamp(); // timestamp (now)
     newTrip.uid = auth.currentUser.uid;
-    await addDoc(tripsRef, newTrip);
-    navigate("/");
+
+    // Adding the document and getting the reference
+    const docRef = await addDoc(tripsRef, newTrip);
+
+    // Accessing the ID from the reference - we need the ID for the next page
+    const newTripId = docRef.id;
+
+    // Navigate to the new trip
+    navigate(`/trips/create1/${newTripId}`);
   }
 
   useEffect(() => {
@@ -40,11 +45,10 @@ export const CreatePage = () => {
   }, []);
 
   function handleAddButton(id) {
-    // Assuming friends is an array of objects with an id property
     const friendToAdd = friends.find((friend) => friend.id === id);
 
     if (friendToAdd) {
-      // If a friend with the given id is found, add it to addedFriends
+      // If a friend with the given id is found, they are added it to addedFriends
       const addedArray = [...addedFriends, friendToAdd];
       setAddedFriends(addedArray);
     } else {
@@ -52,26 +56,9 @@ export const CreatePage = () => {
     }
   }
 
-  function handleImageChange(event) {
-    const file = event.target.files[0];
-    if (file.size < 500000) {
-      // image file size must be below 0,5MB
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setImage(event.target.result);
-      };
-      reader.readAsDataURL(file);
-      setErrorMessage("");
-    } else {
-      // if the image size is too big, setting error message
-      setErrorMessage("The image file is too big!");
-    }
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     const formData = {
-      image: image,
       destination: destination,
       name: name,
       startDate: startDate,
@@ -81,7 +68,6 @@ export const CreatePage = () => {
 
     const validForm =
       formData.destination &&
-      formData.image &&
       formData.name &&
       formData.startDate &&
       formData.endDate;
@@ -128,21 +114,6 @@ export const CreatePage = () => {
             onChange={(e) => setEndDate(e.target.value)}
           />
         </label>
-        <label>
-          Choose an image for your trip (optional)
-          <input
-            type="file"
-            className="file-input"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-          <img
-            className="picture"
-            src={image}
-            alt="Choose"
-            onError={(event) => (event.target.src = imgPlaceholder)}
-          />
-        </label>
         <h3>Add friends</h3>
         {friends.map((friend) => (
           <div key={friend.id}>
@@ -153,7 +124,7 @@ export const CreatePage = () => {
           </div>
         ))}
         <p className="text-error">{errorMessage}</p>
-        <button type="submit">Save</button>
+        <button type="submit">Next</button>
       </form>
     </section>
   );
