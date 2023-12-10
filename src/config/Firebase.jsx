@@ -23,3 +23,4 @@ const db = getFirestore(app);
 
 export const usersRef = collection(db, "users");
 export const tripsRef = collection(db, "trips");
+export const tagsRef = collection(db, "tags");
