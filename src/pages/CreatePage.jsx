@@ -31,7 +31,7 @@ export const CreatePage = () => {
     const newTripId = docRef.id;
 
     // Navigate to the new trip
-    navigate(`/trips/create1/${newTripId}`);
+    navigate(`/trips/tags/${newTripId}`);
   }
 
   useEffect(() => {

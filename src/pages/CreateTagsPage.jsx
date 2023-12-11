@@ -39,7 +39,7 @@ export const CreateTagsPage = () => {
     await updateDoc(docRef, {
       tags: chosenTags,
     });
-    navigate("/");
+    navigate(`/trips/activities/${tripId}`);
   }
 
   return (
