@@ -32,6 +32,7 @@ export const SignInPage = () => {
       <img
         className="png"
         src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/tripsimplelogo.PNG?alt=media&token=0e996dcc-39a1-479f-a9c5-b1b0fa8f245b"
+        alt="logo"
       />
       <h1>Sign in</h1>
 
