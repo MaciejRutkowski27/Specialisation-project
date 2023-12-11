@@ -12,6 +12,7 @@
   --white: #fffbdb;
   --yellow: #f5ba41;
   font-family: "Inter", sans-serif;
+  color: var(--white);
 }
 
 body {
