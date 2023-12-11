@@ -1,10 +1,10 @@
 import { Navigation } from "../components/Navigation";
-
+import WorldMap from "../components/WorldMap";
 export const MapPage = () => {
   return (
     <div>
       <Navigation />
-      <h1>Map</h1>
+      <WorldMap/>
     </div>
   );
 };
