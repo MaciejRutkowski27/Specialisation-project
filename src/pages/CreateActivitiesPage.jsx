@@ -59,9 +59,7 @@ export const CreateActivitiesPage = () => {
       setTrip(docData.data());
     }
 
-    if (tripId) {
-      getTrip();
-    }
+    getTrip();
   }, [tripId]);
 
   useEffect(() => {

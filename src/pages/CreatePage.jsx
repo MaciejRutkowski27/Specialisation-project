@@ -56,7 +56,7 @@ export const CreatePage = () => {
     }
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = {
       destination: destination,
@@ -71,8 +71,9 @@ export const CreatePage = () => {
       formData.name &&
       formData.startDate &&
       formData.endDate;
+
     if (validForm) {
-      createTrip(formData);
+      await createTrip(formData); // Add await here
     } else {
       setErrorMessage("Please, fill in all fields.");
     }
