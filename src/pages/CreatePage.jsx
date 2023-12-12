@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { serverTimestamp, addDoc, onSnapshot } from "firebase/firestore";
 import { tripsRef, usersRef } from "../config/Firebase";
+import Close from "../assets/close.svg";
 
 import "./createPage.css";
 
@@ -79,8 +80,17 @@ export const CreatePage = () => {
     }
   }
 
+  const handleCancel = () => {
+    navigate(-1); // This navigates back one step in the browser history
+  };
+
   return (
     <section>
+      <img
+        onClick={handleCancel}
+        src={Close}
+        alt="Delete the trip and go back to home page."
+      />
       <form onSubmit={handleSubmit}>
         <label>
           Where would you like to go?

@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { tripsRef } from "../config/Firebase";
+import Close from "../assets/close.svg";
 
 export const CreateActivitiesPage = () => {
   const [trip, setTrip] = useState();
@@ -104,7 +105,6 @@ export const CreateActivitiesPage = () => {
       [date]: name,
     }));
   };
-  console.log(days);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -117,8 +117,22 @@ export const CreateActivitiesPage = () => {
     navigate(`/trip/${tripId}`);
   }
 
+  async function deletePost() {
+    const confirmDelete = window.confirm("Do you want to delete this trip?");
+    if (confirmDelete) {
+      const docRef = doc(tripsRef, tripId);
+      await deleteDoc(docRef);
+      navigate("/");
+    }
+  }
+
   return (
     <section>
+      <img
+        onClick={deletePost}
+        src={Close}
+        alt="Delete the trip and go back to home page."
+      />
       <h1>Let&apos;s plan the activities!</h1>
       <p>
         Based on your inputs we are suggesting the activities. Choose one
