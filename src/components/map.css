@@ -17,6 +17,7 @@ svg > path:hover {
   fill: yellow;
 }
 
+
 .ag-canvas {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -54,7 +55,18 @@ display: flex;
 justify-content: center;
 gap: 25%;
 margin-top: 50px;
+margin-left: 20px;
+margin-right: 20px;
 color: #FFFBDB;
+}
+.bucketlist {
+  width: 50%;
+  height: auto;
+}
+.visited {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .mapTop {
   margin-top: 40px;
@@ -72,9 +84,54 @@ color: #FFFBDB;
   width: 40px;
   height: 40px;
 }
-#undermap {
+.undermap {
   padding-left: 20px;
   padding-right: 20px;
+  text-align: center;
+}
+.bucketcontent {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: auto;
+  gap: 20px;
+}
+.flag {
+  width: 20px;
+  height: 10px;
+}
+.popupStyle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #000000;
+    border-radius: 20px;
+    height: 80px;
+    width: 120px;
+    padding: 10px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#popup-top {
+  display: inline-flex;
+  gap: 20px;
+  justify-content: center;
+}
+.popup-flag {
+  height: 20px;
+  width: 30px;
+}
+#popup-button {
+  height: 30px;
+  width: 40px;
+  margin-top: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media screen and (max-width: 767px) {
   .ag-canvas {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import DelayedPageTransition from "./idk";
+import DelayedPageTransition from "./transition";
 export const TripAnimation = () => {
   const [animate, setAnimate] = useState(false);
 

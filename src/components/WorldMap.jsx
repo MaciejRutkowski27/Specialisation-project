@@ -1,24 +1,86 @@
 import "./map.css";
-import {useState} from 'react';
+import { useState, useEffect } from "react";
+import {onSnapshot } from "firebase/firestore";
+import { countriesRef } from "../config/Firebase";
 
-
-
+const Popup = ({ position, country, onClose }) => {
+  const popupPosition = {
+    top: position.y,
+    left: position.x,
+  };
+  return (
+    <div style={popupPosition} className="popupStyle">
+      <div id="popup-top">
+        <img className="popup-flag" src={country.flag} alt="" />
+        <p className="popup-country">{country.name}</p>
+      </div>
+      <button
+        id="popup-button"
+        onClick={onClose}
+        style={{ float: "right", cursor: "pointer" }}
+      >
+        Add to visited
+      </button>
+    </div>
+  );
+};
 export default function WorldMap() {
 const [selectedPaths, setSelectedPaths] = useState([]);
+  const [popupInfo, setPopupInfo] = useState(null);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const [countries, setCountries] = useState([]);
+  const [visitedCountries, setVisitedCountries] = useState([]);
+  
+  useEffect(() => {
+    onSnapshot(countriesRef, (data) => {
+      const countriesData = data.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setCountries(countriesData);
+    });
+  }, []);
 
 const handleClick = (event) => {
   const clickedPathId = event.target.id;
+
+  // Find the selected country based on the clicked path id
+  const selectedCountry = countries.find(
+    (country) => country.id === clickedPathId
+  );
+   if (selectedCountry) {
+     const rect = event.target.getBoundingClientRect();
+     const position = {
+       x: rect.left + window.scrollX,
+       y: rect.top + window.scrollY, // Adjust this value based on your design
+     };
+
+     setPopupInfo(selectedCountry);
+     setPopupPosition(position);
+   }
+
+  // Update the selected country information
+  // setSelectedCountry(selectedCountry);
+  setVisitedCountries((prevVisitedCountries) =>
+    isPathSelected
+      ? prevVisitedCountries.filter((country) => country.id !== clickedPathId)
+      : [...prevVisitedCountries, selectedCountry]
+  );
 
   // Check if the clicked path is already selected
   const isPathSelected = selectedPaths.includes(clickedPathId);
 
   // Update the selected paths array
+
   setSelectedPaths((prevSelectedPaths) =>
     isPathSelected
       ? prevSelectedPaths.filter((path) => path !== clickedPathId)
       : [...prevSelectedPaths, clickedPathId]
   );
 };
+ const closePopup = () => {
+   setPopupInfo(null);
+ };
   return (
     <>
       <div className="mapTop">
@@ -1632,14 +1694,39 @@ const handleClick = (event) => {
           />
         </svg>
       </section>
-      <p id="undermap">
+      <p className="undermap">
         Click on the country to mark it as visited or on your bucket list{" "}
       </p>
       <div className="countrylists">
-        <div className="bucketlist">Bucket list</div>
+        <div className="bucketlist">
+          <p className="undermap">Bucket list</p>
+        </div>
+        <span className="bucketcontent">
+          <p className="undermap">Visited</p>
 
-        <div className="visited">Visited</div>
+          {visitedCountries.map((visitedCountry, index) => (
+            <div key={index} className="visited">
+              <img className="flag" src={visitedCountry.flag} alt="" />
+              <p>{visitedCountry.name}</p>
+            </div>
+          ))}
+          {countries.map((country) => (
+            <div
+              key={country.id}
+              id={country.id}
+              onClick={handleClick}
+              className={selectedPaths.includes(country.id) ? "selected" : ""}
+            ></div>
+          ))}
+        </span>
       </div>
+      {popupInfo && (
+        <Popup
+          position={popupPosition}
+          country={popupInfo}
+          onClose={closePopup}
+        />
+      )}
     </>
   );
           }
