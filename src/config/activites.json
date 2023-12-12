@@ -1,0 +1,296 @@
+{
+  "activities": {
+    "QM8MKRb42vQnMZrcE7Gw": {
+      "destination": "New York",
+      "ventures": [
+        {
+          "name": "Brooklyn Bridge",
+          "description": "You've never see a bridge so beautiful, visit this bridge and take a look at the Statues of Liberty, do not miss this out",
+          "tags": ["Friends", "Short", "View", "Visuals"],
+          "image-type": "landmark"
+        },
+        {
+          "name": "Visiting Empire",
+          "description": "Come and look at the New York city from a completely different perspective, look down...",
+          "tags": ["Friends", "Random", "View", "Wi-fi"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Times Square",
+          "description": "Take a look at the most visited square. Everybody heard about Times Square but not everyone can say they saw it.",
+          "tags": ["Friends", "Visuals", "Fun", "Music"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Central Park Picnic",
+          "description": "Escape the city buzz and enjoy a relaxing picnic in the scenic Central Park.",
+          "tags": ["Friends", "Nature", "Hiking", "Favorite", "View"],
+          "image-type": "natural"
+        },
+        {
+          "name": "Statue of Liberty Helicopter Tour",
+          "description": "Experience the city skyline with a thrilling helicopter tour around the Statue of Liberty.",
+          "tags": [
+            "Friends",
+            "Visuals",
+            "Fun",
+            "Sport",
+            "Entertainment",
+            "Wi-fi"
+          ],
+          "image-type": "landmark"
+        },
+        {
+          "name": "Broadway Show Extravaganza",
+          "description": "Immerse yourself in the world of theater with a spectacular Broadway show.",
+          "tags": ["Friends", "Cinema", "Warm", "Fun", "Music"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "High Line Walk",
+          "description": "Stroll along the elevated High Line park for a unique urban green space experience.",
+          "tags": ["Friends", "Nature", "Short", "Favorite", "View"],
+          "image-type": "outdoor"
+        },
+        {
+          "name": "Brooklyn Art Gallery Tour",
+          "description": "Discover the vibrant art scene of Brooklyn with a tour of local art galleries.",
+          "tags": ["Friends", "Culture", "Visuals", "Hidden", "Random"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Greenwich Village Jazz Night",
+          "description": "Immerse yourself in the soulful rhythms of jazz at a cozy spot in Greenwich Village.",
+          "tags": ["Friends", "Music", "Fun", "Favorite", "Entertainment"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "Rooftop Bar Experience",
+          "description": "Sip on cocktails with panoramic views of the city skyline at one of New York's chic rooftop bars.",
+          "tags": ["Friends", "Visuals", "Fun", "Favorite", "View"],
+          "image-type": "landmark"
+        },
+        {
+          "name": "New York Harbor Cruise",
+          "description": "Embark on a scenic cruise through New York Harbor, taking in iconic landmarks from the water.",
+          "tags": [
+            "Friends",
+            "Visuals",
+            "Fun",
+            "View",
+            "Entertainment",
+            "Wi-fi"
+          ],
+          "image-type": "landmark"
+        },
+        {
+          "name": "Museum of Modern Art (MoMA)",
+          "description": "Explore contemporary masterpieces at the renowned Museum of Modern Art in Midtown Manhattan.",
+          "tags": ["Friends", "Culture", "Cinema", "Favorite", "View"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Chinatown Culinary Adventure",
+          "description": "Indulge in a gastronomic journey through the vibrant flavors of Chinatown with a local food tour.",
+          "tags": ["Friends", "Culture", "Food", "Favorite", "Hidden"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Whitney Museum of American Art",
+          "description": "Explore a diverse collection of contemporary American art at the Whitney Museum located in the Meatpacking District.",
+          "tags": ["Friends", "Culture", "Cinema", "Favorite", "View"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Helicopter Night Tour",
+          "description": "Witness the glittering lights of the city that never sleeps from a helicopter on a mesmerizing night tour.",
+          "tags": [
+            "Friends",
+            "Visuals",
+            "Fun",
+            "Entertainment",
+            "Favorite",
+            "Wi-fi"
+          ],
+          "image-type": "landmark"
+        },
+        {
+          "name": "New York Public Library",
+          "description": "Step into the historic New York Public Library and explore its magnificent architecture and vast literary collections.",
+          "tags": ["Friends", "Culture", "Favorite", "Hidden", "Wi-fi"],
+          "image-type": "historical"
+        },
+        {
+          "name": "Broadway Behind the Scenes",
+          "description": "Go behind the scenes of a Broadway production and witness the magic of live theater unfold.",
+          "tags": ["Friends", "Cinema", "Fun", "Entertainment", "Favorite"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "Grand Central Terminal Exploration",
+          "description": "Discover the architectural marvels and hidden secrets of Grand Central Terminal with a guided tour.",
+          "tags": ["Friends", "Culture", "Hiking", "Hidden", "View"],
+          "image-type": "landmark"
+        },
+        {
+          "name": "High Line Art Installations",
+          "description": "Experience outdoor art like never before with unique installations along the elevated High Line park.",
+          "tags": ["Friends", "Culture", "Visuals", "Hidden", "Favorite"],
+          "image-type": "outdoor"
+        },
+        {
+          "name": "The High Line Art Walk",
+          "description": "Experience the intersection of nature and contemporary art with a stroll through The High Line's outdoor art installations.",
+          "tags": ["Friends", "Culture", "Visuals", "Fun", "Favorite"],
+          "image-type": "outdoor"
+        },
+        {
+          "name": "New York Comedy Club Night",
+          "description": "Laugh the night away with top comedians at a renowned New York comedy club for an unforgettable evening.",
+          "tags": ["Friends", "Entertainment", "Fun", "Favorite", "Music"],
+          "image-type": "entertainment"
+        }
+      ]
+    },
+    "TB8sZWvpObe1x6Pqi2x0": {
+      "destination": "Aarhus",
+      "ventures": [
+        {
+          "name": "AROS",
+          "description": "City of smiles offers many attractions, but one that you should not miss is the Aros musem. ",
+          "tags": ["Friends", "Fun", "View", "Visuals", "Culture"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Mosgaaard Museum",
+          "description": "Interested in where we come from? These museum installations are nothing what you've seen before.",
+          "tags": [
+            "Friends",
+            "Random",
+            "View",
+            "Wi-fi",
+            "Culture",
+            "Random",
+            "Warm",
+            "Cinema"
+          ],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Aarhus Ø",
+          "description": "Modern danish architechture, that is all you need to know before visiting this place that yet doesnt fit.",
+          "tags": ["Friends", "Visuals", "Fun", "Music", "Pets"],
+          "image-type": "outdoor"
+        },
+        {
+          "name": "Djurs Sommerland",
+          "description": "Embark on a day of fun and excitement at Djurs Sommerland, Denmark's largest amusement park.",
+          "tags": ["Friends", "Fun", "Entertainment", "View", "Sport"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "Aarhus Botanical Gardens",
+          "description": "Explore the diverse plant life in the beautiful Aarhus Botanical Gardens.",
+          "tags": ["Friends", "Nature", "Cultural", "Favorite", "View"],
+          "image-type": "natural"
+        },
+        {
+          "name": "Den Gamle By",
+          "description": "Step back in time at Den Gamle By, an open-air museum showcasing the history of Danish urban life.",
+          "tags": ["Friends", "Culture", "Visuals", "Warm", "Hidden"],
+          "image-type": "historical"
+        },
+        {
+          "name": "Aarhus Street Food Market",
+          "description": "Savor the flavors of Aarhus at the lively Street Food Market with a variety of local and international cuisines.",
+          "tags": ["Friends", "Fun", "Warm", "Favorite", "Food"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Risskov Coastal Walk",
+          "description": "Enjoy a refreshing walk along the Risskov coastal area, offering beautiful sea views and tranquility.",
+          "tags": ["Friends", "Nature", "Hiking", "Short", "View"],
+          "image-type": "outdoor"
+        },
+        {
+          "name": "Aarhus Street Art Tour",
+          "description": "Discover the dynamic street art scene in Aarhus with a guided walking tour through colorful neighborhoods.",
+          "tags": ["Friends", "Culture", "Visuals", "Fun", "Hidden"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Aarhus Symphony Orchestra Performance",
+          "description": "Experience the enchanting sounds of classical music with a performance by the Aarhus Symphony Orchestra.",
+          "tags": ["Friends", "Music", "Cinema", "Fun", "Entertainment"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "Aarhus Botanical Gardens Night Visit",
+          "description": "Witness the beauty of the botanical gardens illuminated at night for a magical and tranquil experience.",
+          "tags": ["Friends", "Nature", "Visuals", "Warm", "Favorite"],
+          "image-type": "natural"
+        },
+        {
+          "name": "Marselisborg Palace Tour",
+          "description": "Explore the regal elegance of Marselisborg Palace and its stunning surrounding gardens.",
+          "tags": ["Friends", "Culture", "Hiking", "Favorite", "View"],
+          "image-type": "historical"
+        },
+        {
+          "name": "Aarhus Jazz Festival",
+          "description": "Immerse yourself in the lively atmosphere of the Aarhus Jazz Festival, featuring local and international jazz artists.",
+          "tags": ["Friends", "Music", "Fun", "Entertainment", "Favorite"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "Aarhus Bike Tour",
+          "description": "Explore the city's charm on a guided bike tour, covering key landmarks and hidden gems.",
+          "tags": ["Friends", "Outdoor", "Fun", "Favorite", "View"],
+          "image-type": "outdoor"
+        },
+        {
+          "name": "Aarhus Food Truck Festival",
+          "description": "Indulge in a culinary adventure at the annual Aarhus Food Truck Festival, featuring diverse street food delights.",
+          "tags": ["Friends", "Food", "Fun", "Favorite", "Entertainment"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "Aarhus Marselisborg Deer Park",
+          "description": "Discover tranquility in the Marselisborg Deer Park, where nature and wildlife create a peaceful retreat.",
+          "tags": ["Friends", "Nature", "Hiking", "Favorite", "View"],
+          "image-type": "natural"
+        },
+        {
+          "name": "Den Permanente Sculpture Park",
+          "description": "Immerse yourself in art amidst the natural beauty of Den Permanente Sculpture Park's outdoor installations.",
+          "tags": ["Friends", "Culture", "Visuals", "Fun", "Favorite"],
+          "image-type": "cultural"
+        },
+        {
+          "name": "Aarhus Lighthouse Sunset View",
+          "description": "Witness a breathtaking sunset from the Aarhus Lighthouse, providing panoramic views of the coastal beauty.",
+          "tags": ["Friends", "Nature", "View", "Favorite", "Visuals"],
+          "image-type": "outdoor"
+        },
+        {
+          "name": "Aarhus Brewery Tour",
+          "description": "Embark on a brewery tour to sample local craft beers and learn about Aarhus' brewing traditions.",
+          "tags": ["Friends", "Fun", "Favorite", "Entertainment", "Culture"],
+          "image-type": "entertainment"
+        },
+        {
+          "name": "Aarhus Djursland Coastal Bike Ride",
+          "description": "Cycle along the stunning Djursland coastal route, exploring picturesque landscapes and seaside villages.",
+          "tags": ["Friends", "Outdoor", "Hiking", "Favorite", "View"],
+          "image-type": "natural"
+        },
+        {
+          "name": "Aarhus Kayaking Adventure",
+          "description": "Embark on a kayaking adventure along the Aarhus River, exploring the city's scenic waterfront from a unique perspective.",
+          "tags": ["Friends", "Outdoor", "Fun", "Favorite", "View"],
+          "image-type": "outdoor"
+        }
+      ]
+    }
+  }
+}
