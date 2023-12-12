@@ -13,6 +13,7 @@ import { TripAnimation } from "./components/TripAnimation";
 import { MapPage } from "./pages/MapPage";
 import { CreateTagsPage } from "./pages/CreateTagsPage";
 import { CreateActivitiesPage } from "./pages/CreateActivitiesPage";
+import { TripPage } from "./pages/TripPage";
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
@@ -46,6 +47,7 @@ export default function App() {
           path="/trips/activities/:tripId"
           element={<CreateActivitiesPage />}
         />
+        <Route path="/trip/:tripId" element={<TripPage />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
