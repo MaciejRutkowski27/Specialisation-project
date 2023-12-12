@@ -9,6 +9,7 @@ export const CreateActivitiesPage = () => {
   const [destination, setDestination] = useState("");
   const [activities, setActivities] = useState([]);
   const [dateArray, setDateArray] = useState([]);
+  const [days, setDays] = useState();
   const params = useParams();
   const navigate = useNavigate();
   const tripId = params.tripId;
@@ -92,7 +93,6 @@ export const CreateActivitiesPage = () => {
 
   // Order the list based on the similarity score in descending order
   const orderedList = scoredList.sort((a, b) => b.score - a.score);
-  console.log(orderedList);
 
   const getActivitiesForDay = (dayIndex) => {
     const startIndex = dayIndex * 3;
@@ -100,9 +100,24 @@ export const CreateActivitiesPage = () => {
     return orderedList.slice(startIndex, endIndex).map((entry) => entry.item);
   };
 
-  const handleSubmit = () => {
-    navigate(`/trip/${tripId}`);
+  const handleActivityClick = (date, name) => {
+    setDays((prevSelected) => ({
+      ...prevSelected,
+      [date]: name,
+    }));
   };
+  console.log(days);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const docRef = doc(tripsRef, tripId);
+
+    // Update the trip with the days
+    await updateDoc(docRef, {
+      days: days,
+    });
+    navigate(`/trip/${tripId}`);
+  }
 
   return (
     <section>
@@ -117,7 +132,10 @@ export const CreateActivitiesPage = () => {
             <p>{date}</p>
             <div>
               {getActivitiesForDay(index).map((selectedObject, objIndex) => (
-                <div key={objIndex}>
+                <div
+                  key={objIndex}
+                  onClick={() => handleActivityClick(date, selectedObject.name)}
+                >
                   <p>{selectedObject.name}</p>
                 </div>
               ))}
