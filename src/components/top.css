@@ -1,0 +1,15 @@
+.mapTop {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+#searchicon {
+  width: 40px;
+  height: 40px;
+}
+.topicons {
+  display: flex;
+  align-items: center;
+}

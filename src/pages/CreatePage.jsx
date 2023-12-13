@@ -19,6 +19,7 @@ export const CreatePage = () => {
   const [friends, setFriends] = useState([]);
   const [addedFriends, setAddedFriends] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [warningMessage, setWarningMessage] = useState("");
 
   // creating the trip
   async function createTrip(newTrip) {
@@ -34,6 +35,30 @@ export const CreatePage = () => {
     // Navigate to the new trip
     navigate(`/trips/tags/${newTripId}`);
   }
+
+  const handleStartDateChange = (e) => {
+    setStartDate(e.target.value);
+    updateWarningMessage(e.target.value, endDate);
+  };
+
+  const handleEndDateChange = (e) => {
+    setEndDate(e.target.value);
+    updateWarningMessage(startDate, e.target.value);
+  };
+
+  const updateWarningMessage = (start, end) => {
+    const sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+    const startDateObj = new Date(start);
+    const endDateObj = new Date(end);
+
+    if (endDateObj - startDateObj > sevenDaysInMilliseconds) {
+      setWarningMessage(
+        "If the dates are more than 7 days apart, we might not have enough of activities."
+      );
+    } else {
+      setWarningMessage("");
+    }
+  };
 
   useEffect(() => {
     onSnapshot(usersRef, (data) => {
@@ -116,15 +141,16 @@ export const CreatePage = () => {
             type="date"
             value={startDate}
             placeholder="mm-dd-yyyy"
-            onChange={(e) => setStartDate(e.target.value)}
+            onChange={handleStartDateChange}
           />
           <input
             type="date"
             value={endDate}
             placeholder="mm-dd-yyyy"
-            onChange={(e) => setEndDate(e.target.value)}
+            onChange={handleEndDateChange}
           />
         </label>
+        {warningMessage && <p>{warningMessage}</p>}
         <h3>Add friends</h3>
         {friends.map((friend) => (
           <div key={friend.id}>

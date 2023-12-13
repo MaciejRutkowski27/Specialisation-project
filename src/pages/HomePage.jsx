@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
 import { Navigation } from "../components/Navigation";
+import { ProfileCircle } from "../components/TopPart";
 
 export const HomePage = () => {
   return (
-    <div>
+    <section>
       <Navigation />
-      <Link to="/profile">Profile</Link>
-    </div>
+      <ProfileCircle />
+    </section>
   );
 };
