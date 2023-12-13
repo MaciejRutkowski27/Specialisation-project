@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { serverTimestamp, addDoc, onSnapshot } from "firebase/firestore";
 import { tripsRef, usersRef } from "../config/Firebase";
+import Close from "../assets/close.svg";
 
 import "./createPage.css";
 
@@ -56,7 +57,7 @@ export const CreatePage = () => {
     }
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = {
       destination: destination,
@@ -71,15 +72,25 @@ export const CreatePage = () => {
       formData.name &&
       formData.startDate &&
       formData.endDate;
+
     if (validForm) {
-      createTrip(formData);
+      await createTrip(formData); // Add await here
     } else {
       setErrorMessage("Please, fill in all fields.");
     }
   }
 
+  const handleCancel = () => {
+    navigate(-1); // This navigates back one step in the browser history
+  };
+
   return (
     <section>
+      <img
+        onClick={handleCancel}
+        src={Close}
+        alt="Delete the trip and go back to home page."
+      />
       <form onSubmit={handleSubmit}>
         <label>
           Where would you like to go?

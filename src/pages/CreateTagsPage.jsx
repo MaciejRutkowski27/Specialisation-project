@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { doc, updateDoc, onSnapshot } from "firebase/firestore";
+import { doc, updateDoc, onSnapshot, deleteDoc } from "firebase/firestore";
 import { tripsRef, tagsRef } from "../config/Firebase";
+import Close from "../assets/close.svg";
 
 export const CreateTagsPage = () => {
   const params = useParams();
@@ -42,8 +43,22 @@ export const CreateTagsPage = () => {
     navigate(`/trips/activities/${tripId}`);
   }
 
+  async function deletePost() {
+    const confirmDelete = window.confirm("Do you want to delete this trip?");
+    if (confirmDelete) {
+      const docRef = doc(tripsRef, tripId);
+      await deleteDoc(docRef);
+      navigate("/");
+    }
+  }
+
   return (
     <section>
+      <img
+        onClick={deletePost}
+        src={Close}
+        alt="Delete the trip and go back to home page."
+      />
       <form onSubmit={saveTrip}>
         <h1>Choose tags</h1>
         {tags.map((tag) => (
