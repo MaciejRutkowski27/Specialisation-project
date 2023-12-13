@@ -7,7 +7,7 @@ import Placeholder from "../assets/placeholder.webp";
 import { Link } from "react-router-dom";
 import "./top.css";
 
-export const ProfileCircle = () => {
+export const TopPart = () => {
   const [picture, setPicture] = useState("");
   const auth = getAuth();
   // getting the information about the user

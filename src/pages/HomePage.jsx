@@ -1,11 +1,15 @@
 import { Navigation } from "../components/Navigation";
-import { ProfileCircle } from "../components/TopPart";
+import CTA_image from "../assets/CTA section.webp";
+import { TopPart } from "../components/TopPart";
 
 export const HomePage = () => {
   return (
     <section>
       <Navigation />
-      <ProfileCircle />
+      <TopPart />
+      <section>
+        <img src={CTA_image} alt="Travel with us" />
+      </section>
     </section>
   );
 };
