@@ -1,5 +1,5 @@
 import { Navigation } from "../components/Navigation";
-import { ProfileCircle } from "../components/ProfileCircle";
+import { ProfileCircle } from "../components/TopPart";
 
 export const HomePage = () => {
   return (

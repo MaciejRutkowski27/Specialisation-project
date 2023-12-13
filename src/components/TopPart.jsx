@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import Placeholder from "../assets/placeholder.webp";
 
 import { Link } from "react-router-dom";
+import "./top.css";
 
 export const ProfileCircle = () => {
   const [picture, setPicture] = useState("");
@@ -16,7 +17,7 @@ export const ProfileCircle = () => {
         const docRef = doc(usersRef, auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
         if (userData) {
-          setPicture(userData.image || Placeholder);
+          setPicture(userData.picture || Placeholder);
         }
       }
     }
