@@ -1,10 +1,12 @@
 import { Navigation } from "../components/Navigation";
+import { ProfileCircle } from "../components/ProfileCircle";
 import WorldMap from "../components/WorldMap";
 export const MapPage = () => {
   return (
     <div>
       <Navigation />
-      <WorldMap/>
+      <ProfileCircle />
+      <WorldMap />
     </div>
   );
 };
