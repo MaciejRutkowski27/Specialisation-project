@@ -130,25 +130,31 @@ export const CreateActivitiesPage = () => {
   }
 
   return (
-    <section className="general-margin">
+    <section className="general-margin" aria-labelledby="activities-heading">
       <img
         onClick={deletePost}
         src={Close}
         alt="Delete the trip and go back to home page."
+        role="button"
       />
-      <section className="image-container">
-        <img src={ProgressBar} alt="Create trip: step 1 out of 3" />
+      <section className="image-container" aria-hidden="true">
+        {/* ProgressBar is a decorative image with no additional information */}
+        <img src={ProgressBar} alt="" aria-hidden="true" />
       </section>
-      <h1>Let&apos;s plan the activities!</h1>
+      <h1 id="activities-heading">Let&apos;s plan the activities!</h1>
       <p className="small">
-        Based on your inputs we are suggesting the activities. Choose one
-        activity for each day.
+        Based on your inputs, we are suggesting activities. Choose one activity
+        for each day.
       </p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-labelledby="activities-form">
         {dateArray.map((date, index) => (
           <div key={index}>
             <h2>{`Day ${index + 1} - ${date}`}</h2>
-            <div className="activities-cards">
+            <div
+              className="activities-cards"
+              role="group"
+              aria-labelledby={`day-${index + 1}-heading`}
+            >
               {getActivitiesForDay(index).map((selectedObject, objIndex) => (
                 <div
                   key={objIndex}
@@ -158,6 +164,8 @@ export const CreateActivitiesPage = () => {
                       ? "clicked-activity"
                       : ""
                   }`}
+                  role="button"
+                  aria-pressed={days?.[date]?.includes(selectedObject.name)}
                 >
                   <img
                     className="activities-picture"
@@ -174,7 +182,11 @@ export const CreateActivitiesPage = () => {
           </div>
         ))}
         <section className="button-section">
-          <button className="static-button" type="submit">
+          <button
+            className="static-button"
+            type="submit"
+            aria-label="Create the trip"
+          >
             Create the trip
           </button>
         </section>

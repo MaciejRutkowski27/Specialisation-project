@@ -178,23 +178,26 @@ export const CreatePage = () => {
   }
 
   return (
-    <section className="general-margin">
+    <section className="general-margin" aria-labelledby="create-trip-heading">
       <img
         onClick={handleCancel}
         src={Close}
-        alt="Delete the trip and go back to home page."
+        alt="Delete the trip and go back to the home page."
+        role="button"
       />
-      <section className="image-container">
-        <img src={ProgressBar} alt="Create trip: step 1 out of 3" />
+      <section className="image-container" aria-hidden="true">
+        {/* ProgressBar is a decorative image with no additional information */}
+        <img src={ProgressBar} alt="" aria-hidden="true" />
       </section>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-labelledby="create-trip-form">
         <section className="input-box">
           <label>
-            <h2>Where would you like to go?</h2>
+            <h2 id="destination-label">Where would you like to go?</h2>
             <select
               className="create-field"
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
+              aria-labelledby="destination-label"
             >
               <option value="" disabled>
                 Select a destination
@@ -207,23 +210,25 @@ export const CreatePage = () => {
             </select>
           </label>
           <label>
-            <h2>Give your trip a name</h2>
+            <h2 id="trip-name-label">Give your trip a name</h2>
             <input
               className="create-field"
               type="text"
               value={name}
               placeholder="My trip to New York"
               onChange={(e) => setName(e.target.value)}
+              aria-labelledby="trip-name-label"
             />
           </label>
           <label>
-            <h2>Choose the dates</h2>
+            <h2 id="dates-label">Choose the dates</h2>
             <input
               className="create-field date"
               type="date"
               value={startDate}
               placeholder="mm-dd-yyyy"
               onChange={handleStartDateChange}
+              aria-labelledby="dates-label"
             />
             <input
               className="create-field date"
@@ -231,9 +236,14 @@ export const CreatePage = () => {
               value={endDate}
               placeholder="mm-dd-yyyy"
               onChange={handleEndDateChange}
+              aria-labelledby="dates-label"
             />
           </label>
-          {warningMessage && <p>{warningMessage}</p>}
+          {warningMessage && (
+            <p aria-live="polite" role="alert">
+              {warningMessage}
+            </p>
+          )}
         </section>
         <h2>Add friends</h2>
         {friends.map((friend) => (
@@ -243,7 +253,7 @@ export const CreatePage = () => {
                 <img
                   className="circle_image"
                   src={friend.picture || Placeholder}
-                  alt="Go to the profile page"
+                  alt={`${friend.username}'s profile`}
                 />
               </div>
               <h3>{friend.username}</h3>
@@ -270,17 +280,25 @@ export const CreatePage = () => {
             className="picture"
             accept="image/*"
             onChange={handleImageChange}
+            aria-labelledby="image-label"
           />
           <img
             className="picture"
             src={picture}
             alt="Choose"
             onError={(event) => (event.target.src = Placeholder)}
+            aria-labelledby="image-label"
           />
         </label>
-        <p className="text-error">{errorMessage}</p>
+        <p className="text-error" aria-live="assertive" role="alert">
+          {errorMessage}
+        </p>
         <section className="button-section">
-          <button className="static-button" type="submit">
+          <button
+            className="static-button"
+            type="submit"
+            aria-label="Go to the next page."
+          >
             Next
           </button>
         </section>

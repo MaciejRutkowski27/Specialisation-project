@@ -56,18 +56,20 @@ export const CreateTagsPage = () => {
   }
 
   return (
-    <section className="general-margin">
+    <section className="general-margin" aria-labelledby="choose-tags-heading">
       <img
         onClick={deletePost}
         src={Close}
-        alt="Delete the trip and go back to home page."
+        alt="Delete the trip and go back to the home page."
+        role="button"
       />
-      <section className="image-container">
-        <img src={ProgressBar} alt="Create trip: step 1 out of 3" />
+      <section className="image-container" aria-hidden="true">
+        {/* ProgressBar is a decorative image with no additional information */}
+        <img src={ProgressBar} alt="" aria-hidden="true" />
       </section>
-      <form onSubmit={saveTrip}>
-        <h1>Choose tags</h1>
-        <section className="tags-container">
+      <form onSubmit={saveTrip} aria-labelledby="choose-tags-form">
+        <h1 id="choose-tags-heading">Choose tags</h1>
+        <section className="tags-container" aria-live="polite">
           {tags.map((tag) => (
             <div
               className={`tag-container ${
@@ -75,6 +77,8 @@ export const CreateTagsPage = () => {
               }`}
               onClick={() => handleTagClick(tag.name)}
               key={tag.id}
+              role="button"
+              aria-label={`Select or unselect ${tag.name}`}
             >
               <img className="tag-image" src={tag.picture} alt="" />
               <p className="yellow-text">{tag.name}</p>

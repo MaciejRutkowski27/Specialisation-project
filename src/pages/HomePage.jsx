@@ -28,11 +28,19 @@ export const HomePage = () => {
       <Navigation />
       <TopPart />
       <section style={{ position: "relative" }}>
-        <img className="picture" src={CTA_image} alt="Travel with us" />
+        <img
+          className="picture"
+          src={CTA_image}
+          alt="Travel with us"
+          aria-hidden="true"
+        />
         <div className="overlay-content general-margin">
           <h1 id="main-heading">Plan your next trip!</h1>
           <Link to="/create">
-            <button role="link" aria-label="Start planning your next trip">
+            <button
+              role="link"
+              aria-label="Start planning your next trip by going to the create form"
+            >
               Start planning
             </button>
           </Link>

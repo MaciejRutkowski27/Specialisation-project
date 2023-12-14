@@ -29,14 +29,15 @@ export const TopPart = () => {
       <Link to="/">
         <img
           src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/Screenshot%202023-12-01%20at%2013.19%201.png?alt=media&token=5831f632-e649-42cf-9adc-6464614ab200"
-          alt="tripsimple"
+          alt="tripsimple logo"
         />
       </Link>
       <div className="topicons">
         <img
           id="searchicon"
           src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/search-normal.svg?alt=media&token=70f159f9-a9b3-465c-ba97-f12b750433c6"
-          alt="searchicon"
+          alt="search icon"
+          aria-label="Search"
         />
         <Link to="/profile">
           <div className="circle_image_container">
