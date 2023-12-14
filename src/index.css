@@ -20,7 +20,7 @@ body {
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2rem;
   color: var(--white);
   font-weight: 600;
 }
@@ -43,15 +43,23 @@ p {
   color: var(--white);
 }
 
+.small {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
 button {
   font-size: 1rem;
   font-family: inherit;
   font-weight: 500;
   border-width: 0px;
   background-color: var(--yellow);
+  color: var(--background);
   padding: 0.5rem 2rem;
   border-radius: 20px;
 }
+
 input {
   border-width: 0px;
 }
