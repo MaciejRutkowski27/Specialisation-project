@@ -78,7 +78,7 @@ svg#svglogo {
   }
 }
 .field {
-  background-color: #fffbdb;
+  background-color: var(--white);
   height: 50px;
   width: 75%;
   margin-bottom: 15%;

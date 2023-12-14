@@ -3,10 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { serverTimestamp, addDoc, onSnapshot } from "firebase/firestore";
 import { tripsRef, usersRef } from "../config/Firebase";
-import Close from "../assets/close.svg";
 
+import Close from "../assets/close.svg";
 import "./createPage.css";
 import Placeholder from "../assets/placeholder.webp";
+import ProgressBar from "../assets/progress1.svg";
 
 export const CreatePage = () => {
   const auth = getAuth();
@@ -130,48 +131,57 @@ export const CreatePage = () => {
   }
 
   return (
-    <section>
+    <section className="general-margin">
       <img
         onClick={handleCancel}
         src={Close}
         alt="Delete the trip and go back to home page."
       />
+      <section className="image-container">
+        <img src={ProgressBar} alt="Create trip: step 1 out of 3" />
+      </section>
       <form onSubmit={handleSubmit}>
-        <label>
-          Where would you like to go?
-          <input
-            type="text"
-            value={destination}
-            placeholder="Malorca, Porto Rico, New York, ..."
-            onChange={(e) => setDestination(e.target.value)}
-          />
-        </label>
-        <label>
-          Give your trip a name
-          <input
-            type="text"
-            value={name}
-            placeholder="My trip to New York"
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <label>
-          Choose the dates
-          <input
-            type="date"
-            value={startDate}
-            placeholder="mm-dd-yyyy"
-            onChange={handleStartDateChange}
-          />
-          <input
-            type="date"
-            value={endDate}
-            placeholder="mm-dd-yyyy"
-            onChange={handleEndDateChange}
-          />
-        </label>
-        {warningMessage && <p>{warningMessage}</p>}
-        <h3>Add friends</h3>
+        <section className="input-box">
+          <label>
+            <h2>Where would you like to go?</h2>
+            <input
+              className="create-field"
+              type="text"
+              value={destination}
+              placeholder="Malorca, Porto Rico, New York, ..."
+              onChange={(e) => setDestination(e.target.value)}
+            />
+          </label>
+          <label>
+            <h2>Give your trip a name</h2>
+            <input
+              className="create-field"
+              type="text"
+              value={name}
+              placeholder="My trip to New York"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+          <label>
+            <h2>Choose the dates</h2>
+            <input
+              className="create-field date"
+              type="date"
+              value={startDate}
+              placeholder="mm-dd-yyyy"
+              onChange={handleStartDateChange}
+            />
+            <input
+              className="create-field date"
+              type="date"
+              value={endDate}
+              placeholder="mm-dd-yyyy"
+              onChange={handleEndDateChange}
+            />
+          </label>
+          {warningMessage && <p>{warningMessage}</p>}
+        </section>
+        <h2>Add friends</h2>
         {friends.map((friend) => (
           <div key={friend.id}>
             <p>{friend.username}</p>
