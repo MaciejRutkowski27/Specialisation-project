@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { tripsRef } from "../config/Firebase";
 import { EventList } from "../components/EventList";
+import { Link } from "react-router-dom";
 
 import Placeholder from "../assets/placeholder.webp";
+import HomeFilled from "../assets/filled_home.svg";
 
 export const TripPage = () => {
   // states
-  const [trip, setTrip] = useState({});
   const [activities, setActivities] = useState([]);
   const [name, setName] = useState("");
   const [destination, setDestination] = useState("");
@@ -28,7 +29,6 @@ export const TripPage = () => {
     async function getTrip() {
       const docRef = doc(tripsRef, tripId);
       const docData = await getDoc(docRef);
-      setTrip(docData.data());
       setDays(docData.data().days);
       setName(docData.data().name);
       setDestination(docData.data().destination);
@@ -70,6 +70,9 @@ export const TripPage = () => {
   return (
     <section>
       <img className="picture" src={picture} alt="Trip" />
+      <Link to="/">
+        <img src={HomeFilled} alt="Go to the discovery page" />
+      </Link>
       <h1>{name}</h1>
       <h3>
         {startDate}-{endDate}

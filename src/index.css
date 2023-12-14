@@ -20,9 +20,21 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2.3rem;
   color: var(--white);
   font-weight: 600;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: var(--white);
+  font-weight: 500;
 }
 
 p {

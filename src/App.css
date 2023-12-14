@@ -1,14 +1,20 @@
-.circle_image_container {
-  width: 50px; /* Adjust the size as needed */
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
+.general-margin {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.circle_image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the image covers the entire container */
+/* color themes */
+
+body.light-theme {
+  --background: #0c1d36;
+  --white: #fffbdb;
+  --yellow: #f5ba41;
+}
+
+body.dark-theme {
+  --background: #fffbdb;
+  --white: #0c1d36;
+  --yellow: #f5ba41;
 }
 
 /*Animation styling */

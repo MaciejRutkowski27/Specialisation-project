@@ -6,6 +6,7 @@ import { tripsRef, usersRef } from "../config/Firebase";
 import Close from "../assets/close.svg";
 
 import "./createPage.css";
+import Placeholder from "../assets/placeholder.webp";
 
 export const CreatePage = () => {
   const auth = getAuth();
@@ -17,6 +18,7 @@ export const CreatePage = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [friends, setFriends] = useState([]);
+  const [picture, setPicture] = useState("");
   const [addedFriends, setAddedFriends] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [warningMessage, setWarningMessage] = useState("");
@@ -90,6 +92,7 @@ export const CreatePage = () => {
       startDate: startDate,
       endDate: endDate,
       addedFriends: addedFriends,
+      picture: picture,
     };
 
     const validForm =
@@ -108,6 +111,23 @@ export const CreatePage = () => {
   const handleCancel = () => {
     navigate(-1); // This navigates back one step in the browser history
   };
+
+  // adding picture
+  function handleImageChange(event) {
+    const file = event.target.files[0];
+    if (file.size < 500000) {
+      // image file size must be below 0,5MB
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setPicture(event.target.result);
+      };
+      reader.readAsDataURL(file);
+      setErrorMessage(""); // reset errorMessage state
+    } else {
+      // if not below 0.5MB display an error message using the errorMessage state
+      setErrorMessage("The image file is too big!");
+    }
+  }
 
   return (
     <section>
@@ -160,6 +180,21 @@ export const CreatePage = () => {
             </button>
           </div>
         ))}
+        <label>
+          Image
+          <input
+            type="file"
+            className="picture"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+          <img
+            className="picture"
+            src={picture}
+            alt="Choose"
+            onError={(event) => (event.target.src = Placeholder)}
+          />
+        </label>
         <p className="text-error">{errorMessage}</p>
         <button type="submit">Next</button>
       </form>

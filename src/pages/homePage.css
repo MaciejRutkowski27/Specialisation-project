@@ -1,0 +1,28 @@
+.overlay-content {
+  position: absolute;
+  top: 50%;
+}
+
+.trip-cards {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.trip-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.trip-card {
+  margin-right: 3vw;
+}
+
+.trip-picture {
+  width: 60vw;
+  height: 20vh;
+  border-radius: 20px;
+}
+
+.user-pictures {
+  display: flex;
+}
