@@ -24,21 +24,27 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <section>
+    <section aria-labelledby="main-heading">
       <Navigation />
       <TopPart />
       <section style={{ position: "relative" }}>
         <img className="picture" src={CTA_image} alt="Travel with us" />
         <div className="overlay-content general-margin">
-          <h1>Plan your next trip!</h1>
+          <h1 id="main-heading">Plan your next trip!</h1>
           <Link to="/create">
-            <button>Start planning</button>
+            <button role="link" aria-label="Start planning your next trip">
+              Start planning
+            </button>
           </Link>
         </div>
       </section>
       <section className="general-margin">
         <h2>Recommended for you</h2>
-        <section className="trip-cards">
+        <section
+          className="trip-cards"
+          role="region"
+          aria-labelledby="recommended-heading"
+        >
           {trips.map((trip) => (
             <TripCard key={trip.id} trip={trip} />
           ))}
