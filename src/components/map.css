@@ -6,15 +6,7 @@ html {
 *:after {
   box-sizing: inherit;
 }
-html,
-body {
-  height: 100%;
-}
-body {
-  background: #21252b;
 
-  color: #d3ddef;
-}
 svg > path:hover {
   fill: yellow;
 }

@@ -25,6 +25,18 @@ h1 {
   font-weight: 600;
 }
 
+h2 {
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
 p {
   font-size: 1rem;
   font-weight: 400;
