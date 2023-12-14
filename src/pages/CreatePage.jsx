@@ -73,17 +73,31 @@ export const CreatePage = () => {
     });
   }, []);
 
-  function handleAddButton(id) {
+  const handleAddButton = (id) => {
     const friendToAdd = friends.find((friend) => friend.id === id);
 
     if (friendToAdd) {
-      // If a friend with the given id is found, they are added it to addedFriends
-      const addedArray = [...addedFriends, friendToAdd];
-      setAddedFriends(addedArray);
+      const isFriendAdded = addedFriends.some(
+        (addedFriend) => addedFriend.id === id
+      );
+
+      if (isFriendAdded) {
+        // If the friend is already added, remove them
+        const updatedArray = addedFriends.filter(
+          (addedFriend) => addedFriend.id !== id
+        );
+        setAddedFriends(updatedArray);
+      } else {
+        // If the friend is not added, add them
+        const updatedArray = [...addedFriends, friendToAdd];
+        setAddedFriends(updatedArray);
+      }
     } else {
       console.error(`Friend with id ${id} not found.`);
     }
-  }
+  };
+
+  console.log(addedFriends);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -183,10 +197,20 @@ export const CreatePage = () => {
         </section>
         <h2>Add friends</h2>
         {friends.map((friend) => (
-          <div key={friend.id}>
+          <div key={friend.id} className="friend-container">
             <p>{friend.username}</p>
-            <button type="button" onClick={() => handleAddButton(friend.id)}>
-              Add
+            <button
+              className={
+                addedFriends.some((addedFriend) => addedFriend.id === friend.id)
+                  ? "button-yellow"
+                  : "button-white"
+              }
+              type="button"
+              onClick={() => handleAddButton(friend.id)}
+            >
+              {addedFriends.some((addedFriend) => addedFriend.id === friend.id)
+                ? "Remove"
+                : "Add"}
             </button>
           </div>
         ))}

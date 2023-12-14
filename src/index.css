@@ -49,6 +49,7 @@ button {
   font-weight: 500;
   border-width: 0px;
   background-color: var(--yellow);
+  color: var(--background);
   padding: 0.5rem 2rem;
   border-radius: 20px;
 }

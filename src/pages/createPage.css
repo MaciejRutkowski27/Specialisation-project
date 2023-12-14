@@ -28,3 +28,20 @@
   width: 40%;
   margin-right: 5%;
 }
+
+.friend-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3vh;
+}
+
+.button-white {
+  background-color: var(--white);
+  color: var(--background);
+}
+
+.button-yellow {
+  background-color: var(--yellow);
+  color: var(--background);
+}
