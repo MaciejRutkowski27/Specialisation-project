@@ -130,7 +130,7 @@ export const CreateActivitiesPage = () => {
   }
 
   return (
-    <section>
+    <section className="general-margin">
       <img
         onClick={deletePost}
         src={Close}
@@ -140,27 +140,44 @@ export const CreateActivitiesPage = () => {
         <img src={ProgressBar} alt="Create trip: step 1 out of 3" />
       </section>
       <h1>Let&apos;s plan the activities!</h1>
-      <p>
+      <p className="small">
         Based on your inputs we are suggesting the activities. Choose one
         activity for each day.
       </p>
       <form onSubmit={handleSubmit}>
         {dateArray.map((date, index) => (
           <div key={index}>
-            <p>{date}</p>
-            <div>
+            <h2>{`Day ${index + 1} - ${date}`}</h2>
+            <div className="activities-cards">
               {getActivitiesForDay(index).map((selectedObject, objIndex) => (
                 <div
                   key={objIndex}
                   onClick={() => handleActivityClick(date, selectedObject.name)}
+                  className={`activities-card ${
+                    days?.[date] && days[date].includes(selectedObject.name)
+                      ? "clicked-activity"
+                      : ""
+                  }`}
                 >
-                  <p>{selectedObject.name}</p>
+                  <img
+                    className="activities-picture"
+                    src={selectedObject.picture}
+                    alt="Destination picture"
+                  />
+                  <section className="text-activity">
+                    <h3 className="blue-text">{selectedObject.name}</h3>
+                    <p className="blue-text">{selectedObject.description}</p>
+                  </section>
                 </div>
               ))}
             </div>
           </div>
         ))}
-        <button type="submit">Create the trip</button>
+        <section className="button-section">
+          <button className="static-button" type="submit">
+            Create the trip
+          </button>
+        </section>
       </form>
     </section>
   );

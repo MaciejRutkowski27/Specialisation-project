@@ -57,6 +57,21 @@
   color: var(--background);
 }
 
+.button-section {
+  display: flex;
+  justify-content: center;
+  width: 95vw;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--background);
+}
+
+.static-button {
+  margin-bottom: 5vh;
+  margin-top: 3vh;
+}
+
 /* CreateTagsPage.jsx */
 
 .tags-container {
@@ -78,6 +93,7 @@
 .selected-tag {
   background-color: var(--background);
   border: 2px solid var(--yellow);
+  border-radius: 20px;
 }
 
 .tag-image {
@@ -88,4 +104,47 @@
 .yellow-text {
   color: var(--yellow);
   font-size: 0.8rem;
+}
+
+/* CreateActivitiesPage.jsx */
+
+.activities-cards {
+  display: flex;
+  overflow-x: auto;
+}
+
+.activities-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.activities-card {
+  margin-right: 3vw;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.activities-picture {
+  width: 70vw;
+  height: 25vh;
+  border-radius: 20px;
+}
+
+.text-activity {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  position: absolute;
+  bottom: 0;
+  height: 25vw;
+  border-radius: 0 0 20px 20px;
+  padding-left: 0.5rem;
+}
+
+.blue-text {
+  color: var(--background);
+}
+
+.clicked-activity {
+  border: 2px solid var(--yellow);
+  border-radius: 20px;
 }

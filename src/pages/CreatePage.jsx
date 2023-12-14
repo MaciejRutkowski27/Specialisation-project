@@ -279,7 +279,11 @@ export const CreatePage = () => {
           />
         </label>
         <p className="text-error">{errorMessage}</p>
-        <button type="submit">Next</button>
+        <section className="button-section">
+          <button className="static-button" type="submit">
+            Next
+          </button>
+        </section>
       </form>
     </section>
   );

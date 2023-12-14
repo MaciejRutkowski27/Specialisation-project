@@ -81,7 +81,11 @@ export const CreateTagsPage = () => {
             </div>
           ))}
         </section>
-        <button type="submit">Next</button>
+        <section className="button-section">
+          <button className="static-button" type="submit">
+            Next
+          </button>
+        </section>
       </form>
     </section>
   );

@@ -20,7 +20,7 @@ body {
 }
 
 h1 {
-  font-size: 2.3rem;
+  font-size: 2rem;
   color: var(--white);
   font-weight: 600;
 }
@@ -39,6 +39,12 @@ h3 {
 
 p {
   font-size: 1rem;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.small {
+  font-size: 0.8rem;
   font-weight: 400;
   color: var(--white);
 }
