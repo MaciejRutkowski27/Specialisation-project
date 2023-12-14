@@ -70,7 +70,9 @@ export const CreateTagsPage = () => {
         <section className="tags-container">
           {tags.map((tag) => (
             <div
-              className="tag-container"
+              className={`tag-container ${
+                chosenTags.includes(tag.name) ? "selected-tag" : ""
+              }`}
               onClick={() => handleTagClick(tag.name)}
               key={tag.id}
             >

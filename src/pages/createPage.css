@@ -75,6 +75,11 @@
   border-radius: 20px;
 }
 
+.selected-tag {
+  background-color: var(--background);
+  border: 2px solid var(--yellow);
+}
+
 .tag-image {
   height: 5vh;
   width: auto;
