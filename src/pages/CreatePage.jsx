@@ -15,6 +15,7 @@ export const CreatePage = () => {
 
   // all the states
   const [destination, setDestination] = useState("");
+  const [availableDestinations, setAvailableDestinations] = useState([]);
   const [name, setName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -23,6 +24,40 @@ export const CreatePage = () => {
   const [addedFriends, setAddedFriends] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [warningMessage, setWarningMessage] = useState("");
+
+  // url to access all the possible destinations
+  const url =
+    "https://trip-simple-20c18-default-rtdb.europe-west1.firebasedatabase.app/activities.json";
+
+  // getting only the available destinations for the drop down
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(url);
+
+        if (response.ok) {
+          const data = await response.json();
+
+          // Extract destinations from the data objects
+          const destinations = Object.values(data).map(
+            (item) => item.destination
+          );
+
+          // Remove duplicates using Set, and convert back to an array
+          const uniqueDestinations = [...new Set(destinations)];
+
+          // Set the state with the unique destinations
+          setAvailableDestinations(uniqueDestinations);
+        } else {
+          console.error("Error fetching data:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    }
+
+    fetchData();
+  }, [url]);
 
   // creating the trip
   async function createTrip(newTrip) {
@@ -156,13 +191,20 @@ export const CreatePage = () => {
         <section className="input-box">
           <label>
             <h2>Where would you like to go?</h2>
-            <input
+            <select
               className="create-field"
-              type="text"
               value={destination}
-              placeholder="Malorca, Porto Rico, New York, ..."
               onChange={(e) => setDestination(e.target.value)}
-            />
+            >
+              <option value="" disabled>
+                Select a destination
+              </option>
+              {availableDestinations.map((dest, index) => (
+                <option key={index} value={dest}>
+                  {dest}
+                </option>
+              ))}
+            </select>
           </label>
           <label>
             <h2>Give your trip a name</h2>
