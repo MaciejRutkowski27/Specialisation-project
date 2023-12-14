@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { usersRef } from "../config/Firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import Placeholder from "../assets/placeholder.webp";
+import { LightMode } from "../components/themes/LightMode";
+import { DarkMode } from "../components/themes/DarkMode";
+import { Navigation } from "../components/Navigation";
 
 export const ProfilePage = () => {
   const [name, setName] = useState("");
@@ -18,7 +21,6 @@ export const ProfilePage = () => {
         setEmail(auth.currentUser.email);
         const docRef = doc(usersRef, auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
-        console.log(userData);
         if (userData) {
           setName(userData.name);
           setPicture(userData.image || Placeholder);
@@ -36,7 +38,6 @@ export const ProfilePage = () => {
       email: email,
       picture: picture,
     };
-    console.log(userToUpdate);
 
     const docRef = doc(usersRef, auth.currentUser.uid);
     await updateDoc(docRef, userToUpdate);
@@ -64,7 +65,10 @@ export const ProfilePage = () => {
 
   return (
     <section className="page">
+      <Navigation />
       <h1>Profile</h1>
+      <LightMode />
+      <DarkMode />
       <form onSubmit={handleSubmit}>
         <label>
           Name

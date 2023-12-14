@@ -3,6 +3,20 @@
   margin-right: 1rem;
 }
 
+/* color themes */
+
+body.light-theme {
+  --background: #0c1d36;
+  --white: #fffbdb;
+  --yellow: #f5ba41;
+}
+
+body.dark-theme {
+  --background: #fffbdb;
+  --white: #0c1d36;
+  --yellow: #f5ba41;
+}
+
 /*Animation styling */
 /* Container */
 .section {
