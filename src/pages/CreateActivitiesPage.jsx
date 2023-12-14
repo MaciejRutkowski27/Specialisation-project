@@ -2,7 +2,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { tripsRef } from "../config/Firebase";
+
 import Close from "../assets/close.svg";
+import "./createPage.css";
+import ProgressBar from "../assets/progress3.svg";
 
 export const CreateActivitiesPage = () => {
   const [trip, setTrip] = useState();
@@ -133,6 +136,9 @@ export const CreateActivitiesPage = () => {
         src={Close}
         alt="Delete the trip and go back to home page."
       />
+      <section className="image-container">
+        <img src={ProgressBar} alt="Create trip: step 1 out of 3" />
+      </section>
       <h1>Let&apos;s plan the activities!</h1>
       <p>
         Based on your inputs we are suggesting the activities. Choose one
