@@ -97,8 +97,6 @@ export const CreatePage = () => {
     }
   };
 
-  console.log(addedFriends);
-
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = {
@@ -198,7 +196,16 @@ export const CreatePage = () => {
         <h2>Add friends</h2>
         {friends.map((friend) => (
           <div key={friend.id} className="friend-container">
-            <p>{friend.username}</p>
+            <section className="little-friend-container">
+              <div className="circle_image_container friend-image">
+                <img
+                  className="circle_image"
+                  src={friend.picture || Placeholder}
+                  alt="Go to the profile page"
+                />
+              </div>
+              <h3>{friend.username}</h3>
+            </section>
             <button
               className={
                 addedFriends.some((addedFriend) => addedFriend.id === friend.id)

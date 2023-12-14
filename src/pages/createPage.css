@@ -36,6 +36,15 @@
   margin-bottom: 3vh;
 }
 
+.little-friend-container {
+  display: flex;
+  align-items: center;
+}
+
+.friend-image {
+  margin-right: 3vw;
+}
+
 .button-white {
   background-color: var(--white);
   color: var(--background);
