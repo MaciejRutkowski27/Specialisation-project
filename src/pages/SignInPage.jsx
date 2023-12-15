@@ -28,35 +28,56 @@ export const SignInPage = () => {
   }
 
   return (
-    <section className="container">
+    <section className="container" aria-labelledby="signin-heading">
       <img
         className="png"
         src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/tripsimplelogo.PNG?alt=media&token=0e996dcc-39a1-479f-a9c5-b1b0fa8f245b"
         alt="logo"
       />
-      <h1>Sign in</h1>
+      <h1 id="signin-heading">Sign in</h1>
 
-      <form className="signinform" onSubmit={signIn}>
+      <form
+        className="signinform"
+        onSubmit={signIn}
+        aria-labelledby="signin-form"
+      >
         <input
           className="field"
           type="email"
           name="mail"
           placeholder="Type your e-mail or username"
+          aria-label="Email or Username"
         />
         <input
           className="field"
           type="password"
           name="password"
           placeholder="Type your password"
+          aria-label="Password"
         />
-        <p className="text-error">{errorMessage}</p>
+        <p className="text-error" aria-live="polite" role="alert">
+          {errorMessage}
+        </p>
         <p>or continue with</p>
-        <div className="icons">
-          <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/google.png?alt=media&token=ee6da16b-6043-424b-bd66-ecccdca6b719" />
-          <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/facebook.png?alt=media&token=c895a6e4-f96c-4b5b-b94b-5d1700fe77c5" />
-          <img src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/apple.png?alt=media&token=001a2c0f-87e3-46cc-8997-b3a66acf54c1" />
+        <div
+          className="icons"
+          role="group"
+          aria-labelledby="continue-with-icons"
+        >
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/google.png?alt=media&token=ee6da16b-6043-424b-bd66-ecccdca6b719"
+            alt="Continue with Google"
+          />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/facebook.png?alt=media&token=c895a6e4-f96c-4b5b-b94b-5d1700fe77c5"
+            alt="Continue with Facebook"
+          />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/apple.png?alt=media&token=001a2c0f-87e3-46cc-8997-b3a66acf54c1"
+            alt="Continue with Apple"
+          />
         </div>
-        <button>Sign in</button>
+        <button aria-label="Sign in">Sign in</button>
       </form>
 
       <p className="text-center">

@@ -1,7 +1,11 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { doc, updateDoc, onSnapshot } from "firebase/firestore";
+import { doc, updateDoc, onSnapshot, deleteDoc } from "firebase/firestore";
 import { tripsRef, tagsRef } from "../config/Firebase";
+
+import Close from "../assets/close.svg";
+import "./createPage.css";
+import ProgressBar from "../assets/progress2.svg";
 
 export const CreateTagsPage = () => {
   const params = useParams();
@@ -42,17 +46,50 @@ export const CreateTagsPage = () => {
     navigate(`/trips/activities/${tripId}`);
   }
 
+  async function deletePost() {
+    const confirmDelete = window.confirm("Do you want to delete this trip?");
+    if (confirmDelete) {
+      const docRef = doc(tripsRef, tripId);
+      await deleteDoc(docRef);
+      navigate("/");
+    }
+  }
+
   return (
-    <section>
-      <form onSubmit={saveTrip}>
-        <h1>Choose tags</h1>
-        {tags.map((tag) => (
-          <div onClick={() => handleTagClick(tag.name)} key={tag.id}>
-            <p>{tag.name}</p>
-            <img src={tag.picture} alt="" />
-          </div>
-        ))}
-        <button type="submit">Next</button>
+    <section className="general-margin" aria-labelledby="choose-tags-heading">
+      <img
+        onClick={deletePost}
+        src={Close}
+        alt="Delete the trip and go back to the home page."
+        role="button"
+      />
+      <section className="image-container" aria-hidden="true">
+        {/* ProgressBar is a decorative image with no additional information */}
+        <img src={ProgressBar} alt="" aria-hidden="true" />
+      </section>
+      <form onSubmit={saveTrip} aria-labelledby="choose-tags-form">
+        <h1 id="choose-tags-heading">Choose tags</h1>
+        <section className="tags-container" aria-live="polite">
+          {tags.map((tag) => (
+            <div
+              className={`tag-container ${
+                chosenTags.includes(tag.name) ? "selected-tag" : ""
+              }`}
+              onClick={() => handleTagClick(tag.name)}
+              key={tag.id}
+              role="button"
+              aria-label={`Select or unselect ${tag.name}`}
+            >
+              <img className="tag-image" src={tag.picture} alt="" />
+              <p className="yellow-text">{tag.name}</p>
+            </div>
+          ))}
+        </section>
+        <section className="button-section">
+          <button className="static-button" type="submit">
+            Next
+          </button>
+        </section>
       </form>
     </section>
   );

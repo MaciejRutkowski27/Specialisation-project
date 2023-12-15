@@ -1,6 +1,5 @@
 import { Navigation } from "../components/Navigation";
-// import WorldMap from "../components/WorldMap";
-import MapComponent from "../components/trymap";
+import MapComponent from "../components/WorldMap";
 export const MapPage = () => {
   return (
     <div>

@@ -1,7 +1,26 @@
+.general-margin {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* color themes */
+
+body.light-theme {
+  --background: #0c1d36;
+  --white: #fffbdb;
+  --yellow: #f5ba41;
+}
+
+body.dark-theme {
+  --background: #fffbdb;
+  --white: #0c1d36;
+  --yellow: #f5ba41;
+}
+
 /*Animation styling */
 /* Container */
 .section {
-  background-color: #0C1D36;
+  background-color: #0c1d36;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -10,7 +29,7 @@
 }
 /* SVG image of the logo */
 svg#svglogo {
-  z-index: 100; 
+  z-index: 100;
 }
 
 /* SVG styling and animation */
@@ -21,9 +40,9 @@ svg#svglogo {
   transform-origin: left;
 }
 .logoanimation {
-  fill: #F5BA41;
+  fill: #f5ba41;
   fill-opacity: 0;
-  stroke: #F5BA41;
+  stroke: #f5ba41;
   stroke-width: 10px;
   stroke-dasharray: 70000px;
   stroke-dashoffset: 70000px;
@@ -33,9 +52,9 @@ svg#svglogo {
   z-index: 3;
 }
 .logoanimation1 {
-  fill: #F5BA41;
+  fill: #f5ba41;
   fill-opacity: 0;
-  stroke: #F5BA41;
+  stroke: #f5ba41;
   stroke-width: 10px;
   stroke-dasharray: 70000px;
   stroke-dashoffset: 70000px;
@@ -50,7 +69,7 @@ svg#svglogo {
     stroke-dashoffset: 70000px;
     fill-opacity: 0;
   }
-  35%{
+  35% {
     fill-opacity: 0;
   }
   100% {
@@ -59,17 +78,19 @@ svg#svglogo {
   }
 }
 .field {
-  background-color: #FFFBDB;
+  background-color: var(--white);
   height: 50px;
   width: 75%;
   margin-bottom: 15%;
   border-radius: 20px;
-  color: #868C89;
+  color: #868c89;
   padding-left: 10px;
 }
 
 @media only screen and (max-width: 900px) {
-  .logoanimation, .logoanimation1, .logoanimation2 {
+  .logoanimation,
+  .logoanimation1,
+  .logoanimation2 {
     width: 40px;
     height: 40px;
   }

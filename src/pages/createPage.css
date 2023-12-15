@@ -1,3 +1,150 @@
+/* CreatePage.jsx and general */
+
 .picture {
   width: 100%;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-field {
+  background-color: var(--white);
+  height: 5vh;
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  color: #868c89;
+  padding-left: 5vw;
+  font-size: 1rem;
+}
+
+.date {
+  width: 40%;
+  margin-right: 5%;
+}
+
+.friend-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3vh;
+}
+
+.little-friend-container {
+  display: flex;
+  align-items: center;
+}
+
+.friend-image {
+  margin-right: 3vw;
+}
+
+.button-white {
+  background-color: var(--white);
+  color: var(--background);
+}
+
+.button-yellow {
+  background-color: var(--yellow);
+  color: var(--background);
+}
+
+.button-section {
+  display: flex;
+  justify-content: center;
+  width: 95vw;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--background);
+}
+
+.static-button {
+  margin-bottom: 5vh;
+  margin-top: 3vh;
+}
+
+/* CreateTagsPage.jsx */
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-container {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  background-color: var(--white);
+  padding: 1rem;
+  margin-right: 3vw;
+  margin-bottom: 3vw;
+  border-radius: 20px;
+}
+
+.selected-tag {
+  background-color: var(--background);
+  border: 2px solid var(--yellow);
+  border-radius: 20px;
+}
+
+.tag-image {
+  height: 5vh;
+  width: auto;
+}
+
+.yellow-text {
+  color: var(--yellow);
+  font-size: 0.8rem;
+}
+
+/* CreateActivitiesPage.jsx */
+
+.activities-cards {
+  display: flex;
+  overflow-x: auto;
+}
+
+.activities-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.activities-card {
+  margin-right: 3vw;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.activities-picture {
+  width: 70vw;
+  height: 25vh;
+  border-radius: 20px;
+}
+
+.text-activity {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  position: absolute;
+  bottom: 0;
+  height: 25vw;
+  border-radius: 0 0 20px 20px;
+  padding-left: 0.5rem;
+}
+
+.blue-text {
+  color: var(--background);
+}
+
+.clicked-activity {
+  border: 2px solid var(--yellow);
+  border-radius: 20px;
 }

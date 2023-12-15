@@ -1,0 +1,296 @@
+{
+  "activities": {
+    "QM8MKRb42vQnMZrcE7Gw": {
+      "destination": "New York",
+      "ventures": [
+        {
+          "name": "Brooklyn Bridge",
+          "description": "You've never see a bridge so beautiful, visit this bridge and take a look at the Statues of Liberty, do not miss this out",
+          "tags": ["Friends", "Short", "View", "Visuals"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fbrooklyn.webp?alt=media&token=16aa0d41-0a6b-4fdb-a989-b46095acaba4"
+        },
+        {
+          "name": "Visiting Empire",
+          "description": "Come and look at the New York city from a completely different perspective, look down...",
+          "tags": ["Friends", "Random", "View", "Wi-fi"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fempire.webp?alt=media&token=056cf3f4-b5e7-4dee-8a7c-8dd27f0995ba"
+        },
+        {
+          "name": "Times Square",
+          "description": "Take a look at the most visited square. Everybody heard about Times Square but not everyone can say they saw it.",
+          "tags": ["Friends", "Visuals", "Fun", "Music"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Ftimes.webp?alt=media&token=7878586a-cd9f-4181-bee7-c80c07c55ce0"
+        },
+        {
+          "name": "Central Park Picnic",
+          "description": "Escape the city buzz and enjoy a relaxing picnic in the scenic Central Park.",
+          "tags": ["Friends", "Nature", "Hiking", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fpicnic.webp?alt=media&token=15b5a751-b6cb-4eba-8368-6e9738c0c612"
+        },
+        {
+          "name": "Statue of Liberty Helicopter Tour",
+          "description": "Experience the city skyline with a thrilling helicopter tour around the Statue of Liberty.",
+          "tags": [
+            "Friends",
+            "Visuals",
+            "Fun",
+            "Sport",
+            "Entertainment",
+            "Wi-fi"
+          ],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fstatue.webp?alt=media&token=7b1ac80f-4cc4-47a2-b2c0-d8daf7b5068d"
+        },
+        {
+          "name": "Broadway Show Extravaganza",
+          "description": "Immerse yourself in the world of theater with a spectacular Broadway show.",
+          "tags": ["Friends", "Cinema", "Warm", "Fun", "Music"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fbroadway.webp?alt=media&token=38233f76-4bca-42ac-a01e-2c9e4c2934d2"
+        },
+        {
+          "name": "High Line Walk",
+          "description": "Stroll along the elevated High Line park for a unique urban green space experience.",
+          "tags": ["Friends", "Nature", "Short", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Flanewalk.webp?alt=media&token=dd4e60c2-a1cf-43b3-a976-a0d7bdf3f08a"
+        },
+        {
+          "name": "Brooklyn Art Gallery Tour",
+          "description": "Discover the vibrant art scene of Brooklyn with a tour of local art galleries.",
+          "tags": ["Friends", "Culture", "Visuals", "Hidden", "Random"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fartgallery.webp?alt=media&token=28be3070-0b25-49b6-9351-0c17620557c9"
+        },
+        {
+          "name": "Greenwich Village Jazz Night",
+          "description": "Immerse yourself in the soulful rhythms of jazz at a cozy spot in Greenwich Village.",
+          "tags": ["Friends", "Music", "Fun", "Favorite", "Entertainment"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fgreenwitch.webp?alt=media&token=9800dc50-ba2b-4a52-8097-d2abd8b6fcdd"
+        },
+        {
+          "name": "Rooftop Bar Experience",
+          "description": "Sip on cocktails with panoramic views of the city skyline at one of New York's chic rooftop bars.",
+          "tags": ["Friends", "Visuals", "Fun", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Frooftop.webp?alt=media&token=38019486-e26f-42e8-b3e9-f58ee85804b4"
+        },
+        {
+          "name": "New York Harbor Cruise",
+          "description": "Embark on a scenic cruise through New York Harbor, taking in iconic landmarks from the water.",
+          "tags": [
+            "Friends",
+            "Visuals",
+            "Fun",
+            "View",
+            "Entertainment",
+            "Wi-fi"
+          ],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fcruise.webp?alt=media&token=59289b82-2ab7-4e18-bea8-69dfd5fef18a"
+        },
+        {
+          "name": "Museum of Modern Art (MoMA)",
+          "description": "Explore contemporary masterpieces at the renowned Museum of Modern Art in Midtown Manhattan.",
+          "tags": ["Friends", "Culture", "Cinema", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fmoma.webp?alt=media&token=6dbfac56-54fa-4eb8-bc22-bea9436cf3ed"
+        },
+        {
+          "name": "Chinatown Culinary Adventure",
+          "description": "Indulge in a gastronomic journey through the vibrant flavors of Chinatown with a local food tour.",
+          "tags": ["Friends", "Culture", "Food", "Favorite", "Hidden"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fchinatown.webp?alt=media&token=25174747-b7eb-45f3-8b10-064289d398ff"
+        },
+        {
+          "name": "Whitney Museum of American Art",
+          "description": "Explore a diverse collection of contemporary American art at the Whitney Museum located in the Meatpacking District.",
+          "tags": ["Friends", "Culture", "Cinema", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fwhitney.webp?alt=media&token=e7e5f460-60bb-46ef-9677-bacfe14b1f70"
+        },
+        {
+          "name": "Helicopter Night Tour",
+          "description": "Witness the glittering lights of the city that never sleeps from a helicopter on a mesmerizing night tour.",
+          "tags": [
+            "Friends",
+            "Visuals",
+            "Fun",
+            "Entertainment",
+            "Favorite",
+            "Wi-fi"
+          ],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fhelicopter.webp?alt=media&token=8f52c63b-2bbf-4ff1-8808-1f3b58940cdf"
+        },
+        {
+          "name": "New York Public Library",
+          "description": "Step into the historic New York Public Library and explore its magnificent architecture and vast literary collections.",
+          "tags": ["Friends", "Culture", "Favorite", "Hidden", "Wi-fi"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Flibrary.webp?alt=media&token=3d8bcf6b-4334-4ef9-b5e2-bab864882ef1"
+        },
+        {
+          "name": "Broadway Behind the Scenes",
+          "description": "Go behind the scenes of a Broadway production and witness the magic of live theater unfold.",
+          "tags": ["Friends", "Cinema", "Fun", "Entertainment", "Favorite"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fbehindscenes.webp?alt=media&token=9bfabca7-e5b0-4b23-9916-98ebadddf9de"
+        },
+        {
+          "name": "Grand Central Terminal Exploration",
+          "description": "Discover the architectural marvels and hidden secrets of Grand Central Terminal with a guided tour.",
+          "tags": ["Friends", "Culture", "Hiking", "Hidden", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fterminal.webp?alt=media&token=5e83bc29-5c7a-40b5-85a1-fb80353b4738"
+        },
+        {
+          "name": "High Line Art Installations",
+          "description": "Experience outdoor art like never before with unique installations along the elevated High Line park.",
+          "tags": ["Friends", "Culture", "Visuals", "Hidden", "Favorite"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fhighline.webp?alt=media&token=d859f6a8-6360-4bfb-8fe4-da302a6c14a9"
+        },
+        {
+          "name": "The High Line Art Walk",
+          "description": "Experience the intersection of nature and contemporary art with a stroll through The High Line's outdoor art installations.",
+          "tags": ["Friends", "Culture", "Visuals", "Fun", "Favorite"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fhighline.webp?alt=media&token=d859f6a8-6360-4bfb-8fe4-da302a6c14a9"
+        },
+        {
+          "name": "New York Comedy Club Night",
+          "description": "Laugh the night away with top comedians at a renowned New York comedy club for an unforgettable evening.",
+          "tags": ["Friends", "Entertainment", "Fun", "Favorite", "Music"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2Fcomedy.webp?alt=media&token=57cf4a2a-f5d8-497b-8976-81029f3d726f"
+        }
+      ]
+    },
+    "TB8sZWvpObe1x6Pqi2x0": {
+      "destination": "Aarhus",
+      "ventures": [
+        {
+          "name": "AROS",
+          "description": "City of smiles offers many attractions, but one that you should not miss is the Aros musem. ",
+          "tags": ["Friends", "Fun", "View", "Visuals", "Culture"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Faros.webp?alt=media&token=811f3456-1361-48ab-b2a6-198eac767821"
+        },
+        {
+          "name": "Moesgaaard Museum",
+          "description": "Interested in where we come from? These museum installations are nothing what you've seen before.",
+          "tags": [
+            "Friends",
+            "Random",
+            "View",
+            "Wi-fi",
+            "Culture",
+            "Random",
+            "Warm",
+            "Cinema"
+          ],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fmoesgaard.webp?alt=media&token=2d42ffc6-74ed-4a3e-b8a1-7453caeba1e0"
+        },
+        {
+          "name": "Aarhus Ø",
+          "description": "Modern danish architechture, that is all you need to know before visiting this place that yet doesnt fit.",
+          "tags": ["Friends", "Visuals", "Fun", "Music", "Pets"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fo.webp?alt=media&token=47ac2b00-fa6a-4d98-8d75-98f1f51aaa1a"
+        },
+        {
+          "name": "Djurs Sommerland",
+          "description": "Embark on a day of fun and excitement at Djurs Sommerland, Denmark's largest amusement park.",
+          "tags": ["Friends", "Fun", "Entertainment", "View", "Sport"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fdjurs.webp?alt=media&token=99bdad03-d686-47fa-8a5b-14f17a1016cd"
+        },
+        {
+          "name": "Aarhus Botanical Gardens",
+          "description": "Explore the diverse plant life in the beautiful Aarhus Botanical Gardens.",
+          "tags": ["Friends", "Nature", "Cultural", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fbotanical.webp?alt=media&token=50dbd2bf-c647-48c6-a220-df84664fe98a"
+        },
+        {
+          "name": "Den Gamle By",
+          "description": "Step back in time at Den Gamle By, an open-air museum showcasing the history of Danish urban life.",
+          "tags": ["Friends", "Culture", "Visuals", "Warm", "Hidden"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fgammel.webp?alt=media&token=574231a3-a9c9-4bad-ab01-73cb23d0bd4e"
+        },
+        {
+          "name": "Aarhus Street Food Market",
+          "description": "Savor the flavors of Aarhus at the lively Street Food Market with a variety of local and international cuisines.",
+          "tags": ["Friends", "Fun", "Warm", "Favorite", "Food"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fstreetfood.webp?alt=media&token=57ab5b62-eee5-488e-8eb6-5c8903856219"
+        },
+        {
+          "name": "Risskov Coastal Walk",
+          "description": "Enjoy a refreshing walk along the Risskov coastal area, offering beautiful sea views and tranquility.",
+          "tags": ["Friends", "Nature", "Hiking", "Short", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Frisskov.webp?alt=media&token=79c223a9-99aa-4cdb-9cd0-3336a761b8cf"
+        },
+        {
+          "name": "Aarhus Street Art Tour",
+          "description": "Discover the dynamic street art scene in Aarhus with a guided walking tour through colorful neighborhoods.",
+          "tags": ["Friends", "Culture", "Visuals", "Fun", "Hidden"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fstreetart.webp?alt=media&token=e7bd937a-ab75-4080-9b40-50d222531d62"
+        },
+        {
+          "name": "Aarhus Symphony Orchestra Performance",
+          "description": "Experience the enchanting sounds of classical music with a performance by the Aarhus Symphony Orchestra.",
+          "tags": ["Friends", "Music", "Cinema", "Fun", "Entertainment"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fsymphony.webp?alt=media&token=6262a318-8c70-4de0-91dc-05f30a6512a4"
+        },
+        {
+          "name": "Aarhus Botanical Gardens Night Visit",
+          "description": "Witness the beauty of the botanical gardens illuminated at night for a magical and tranquil experience.",
+          "tags": ["Friends", "Nature", "Visuals", "Warm", "Favorite"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fbotanical.webp?alt=media&token=50dbd2bf-c647-48c6-a220-df84664fe98a"
+        },
+        {
+          "name": "Marselisborg Palace Tour",
+          "description": "Explore the regal elegance of Marselisborg Palace and its stunning surrounding gardens.",
+          "tags": ["Friends", "Culture", "Hiking", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fmarselis.webp?alt=media&token=da1ac943-e3a1-4955-a7e2-4c14c27205f6"
+        },
+        {
+          "name": "Aarhus Jazz Festival",
+          "description": "Immerse yourself in the lively atmosphere of the Aarhus Jazz Festival, featuring local and international jazz artists.",
+          "tags": ["Friends", "Music", "Fun", "Entertainment", "Favorite"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fjazz.webp?alt=media&token=53217488-77ff-4e9c-a75e-ae99af41181b"
+        },
+        {
+          "name": "Aarhus Bike Tour",
+          "description": "Explore the city's charm on a guided bike tour, covering key landmarks and hidden gems.",
+          "tags": ["Friends", "Outdoor", "Fun", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fbike.webp?alt=media&token=086ca2a9-8971-43db-8983-e7b5a2e66867"
+        },
+        {
+          "name": "Aarhus Food Truck Festival",
+          "description": "Indulge in a culinary adventure at the annual Aarhus Food Truck Festival, featuring diverse street food delights.",
+          "tags": ["Friends", "Food", "Fun", "Favorite", "Entertainment"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Ffood.webp?alt=media&token=9ae9de4f-c0aa-4a37-b65f-6ca93cecc775"
+        },
+        {
+          "name": "Aarhus Marselisborg Deer Park",
+          "description": "Discover tranquility in the Marselisborg Deer Park, where nature and wildlife create a peaceful retreat.",
+          "tags": ["Friends", "Nature", "Hiking", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fdeer.webp?alt=media&token=b8757db5-7472-4cb2-83d0-20586c107b41"
+        },
+        {
+          "name": "Den Permanente Sculpture Park",
+          "description": "Immerse yourself in art amidst the natural beauty of Den Permanente Sculpture Park's outdoor installations.",
+          "tags": ["Friends", "Culture", "Visuals", "Fun", "Favorite"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fsculpture.webp?alt=media&token=524c8056-869e-4c5c-8a49-745c617e7023"
+        },
+        {
+          "name": "Aarhus Lighthouse Sunset View",
+          "description": "Witness a breathtaking sunset from the Aarhus Lighthouse, providing panoramic views of the coastal beauty.",
+          "tags": ["Friends", "Nature", "View", "Favorite", "Visuals"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Flighthouse.webp?alt=media&token=03b441ed-3c4b-4633-bcca-d22870592055"
+        },
+        {
+          "name": "Aarhus Brewery Tour",
+          "description": "Embark on a brewery tour to sample local craft beers and learn about Aarhus' brewing traditions.",
+          "tags": ["Friends", "Fun", "Favorite", "Entertainment", "Culture"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fbrewery.webp?alt=media&token=c89c8f41-2b14-4479-a45f-4c726813a60e"
+        },
+        {
+          "name": "Aarhus Djursland Coastal Bike Ride",
+          "description": "Cycle along the stunning Djursland coastal route, exploring picturesque landscapes and seaside villages.",
+          "tags": ["Friends", "Outdoor", "Hiking", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fdjurs.webp?alt=media&token=99bdad03-d686-47fa-8a5b-14f17a1016cd"
+        },
+        {
+          "name": "Aarhus Kayaking Adventure",
+          "description": "Embark on a kayaking adventure along the Aarhus River, exploring the city's scenic waterfront from a unique perspective.",
+          "tags": ["Friends", "Outdoor", "Fun", "Favorite", "View"],
+          "picture": "https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/activities%2FAarhus%2Fkajak.webp?alt=media&token=c893a6d9-c919-4d51-a596-619afca578ef"
+        }
+      ]
+    }
+  }
+}
