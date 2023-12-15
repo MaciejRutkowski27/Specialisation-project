@@ -14,11 +14,14 @@ export default function MapComponent() {
   const [bucketlist, setBucketlist] = useState([]);
   const [selectedPaths, setSelectedPaths] = useState([]);
   const [popupImage, setPopupImage] = useState("");
+
+  // added
   const [userId, setUserId] = useState();
 
+  // added
   const auth = getAuth();
 
-  // getting the information about the user
+  // getting the information about the user - added
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
@@ -88,6 +91,7 @@ export default function MapComponent() {
     showPopup(event);
   };
 
+  // added
   const saveDataToDatabase = useCallback(async () => {
     const docRef = doc(usersRef, userId);
 
@@ -98,6 +102,7 @@ export default function MapComponent() {
     });
   }, [userId, visitedCountries, bucketlist]);
 
+  // added
   useEffect(() => {
     saveDataToDatabase();
   }, [saveDataToDatabase]);
@@ -162,6 +167,7 @@ export default function MapComponent() {
       console.error(`Path with ID ${pathId} not found.`);
     }
 
+    // added
     saveDataToDatabase();
     hidePopup();
   };
