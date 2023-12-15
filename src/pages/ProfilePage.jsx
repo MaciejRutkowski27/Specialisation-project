@@ -53,18 +53,20 @@ export const ProfilePage = () => {
       <Navigation />
       <section className="general-margin">
         <section className="profile-top">
-          <div className="circle_image_container_profile">
-            <img
-              className="circle_image"
-              src={user.picture || Placeholder}
-              alt="Your profile picture"
-            />
-          </div>
           <div>
-            <h3>{user.username}</h3>
+            <div className="circle_image_container_profile">
+              <img
+                className="circle_image"
+                src={user.picture || Placeholder}
+                alt="Your profile picture"
+              />
+            </div>
             <div>
-              <h3></h3>
-              <p>{filteredLength}</p>
+              <h3>{user.username}</h3>
+              <div>
+                <h3></h3>
+                <p>{filteredLength}</p>
+              </div>
             </div>
           </div>
           <img src={Settings} alt="Edit your profile" />
