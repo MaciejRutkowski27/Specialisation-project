@@ -49,15 +49,29 @@ export const ProfilePage = () => {
 
   useEffect(() => {
     // upcomingTrips for the trips that were created by the user
-    const filtered = trips.filter((trip) => trip.uid === userId);
-    setUpcomingTrips(filtered);
-    setFilteredLength(upcomingTrips.length);
+    const filteredUpcomingTrips = trips.filter((trip) => {
+      return trip.uid === userId && new Date(trip.endDate) > new Date();
+    });
+    setUpcomingTrips(filteredUpcomingTrips);
+    setFilteredLength(filteredUpcomingTrips.length);
 
-    // Update friendTrips based on friends' uids
-    const withFriends = trips.filter((trip) =>
-      trip.addedFriends.some((friend) => friend.id === userId)
+    // Update friendTrips based on friends' uids and endDate
+    const filteredFriendTrips = trips.filter((trip) => {
+      return (
+        trip.addedFriends.some((friend) => friend.id === userId) &&
+        new Date(trip.endDate) > new Date()
+      );
+    });
+    setFriendTrips(filteredFriendTrips);
+
+    // Update pastTrips based on trips that were created by the user or included as a friend and ended in the past
+    const filteredPastTrips = trips.filter(
+      (trip) =>
+        (trip.uid === userId ||
+          trip.addedFriends.some((friend) => friend.id === userId)) &&
+        new Date(trip.endDate) < new Date()
     );
-    setFriendTrips(withFriends);
+    setPastTrips(filteredPastTrips);
   }, [trips, userId, upcomingTrips.length]);
 
   // Update displayedTrips based on the activeLink
