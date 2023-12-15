@@ -22,8 +22,9 @@ body.dark-theme {
   color: var(--yellow);
 }
 
+/* because of the fixed navigation, so we see the content */
 .space-bottom {
-  margin-bottom: 10vh;
+  margin-bottom: 15vh;
 }
 
 /*Animation styling */

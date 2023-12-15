@@ -130,7 +130,10 @@ export const CreateActivitiesPage = () => {
   }
 
   return (
-    <section className="general-margin" aria-labelledby="activities-heading">
+    <section
+      className="general-margin space-bottom"
+      aria-labelledby="activities-heading"
+    >
       <img
         onClick={deletePost}
         src={Close}

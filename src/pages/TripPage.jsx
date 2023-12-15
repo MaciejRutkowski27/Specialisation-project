@@ -68,16 +68,18 @@ export const TripPage = () => {
   }, [url, destination]);
 
   return (
-    <section>
+    <section className="space-bottom">
       <img className="picture" src={picture} alt="Trip" />
       <Link to="/">
         <img src={HomeFilled} alt="Go to the discovery page" />
       </Link>
-      <h1>{name}</h1>
-      <h3>
-        {startDate}-{endDate}
-      </h3>
-      <EventList events={days} />
+      <section className="general-margin">
+        <h1>{name}</h1>
+        <h3>
+          {startDate}-{endDate}
+        </h3>
+        <EventList events={days} />
+      </section>
     </section>
   );
 };
