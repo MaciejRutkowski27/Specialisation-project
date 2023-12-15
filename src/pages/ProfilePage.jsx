@@ -16,7 +16,7 @@ export const ProfilePage = () => {
   const [trips, setTrips] = useState([]);
   const [upcomingTrips, setUpcomingTrips] = useState([]);
   const [filteredLength, setFilteredLength] = useState();
-  const [activeLink, setActiveLink] = useState();
+  const [activeLink, setActiveLink] = useState("upcoming");
   const [displayedTrips, setDisplayedTrips] = useState([]);
   const [friendTrips, setFriendTrips] = useState([]);
   const [pastTrips, setPastTrips] = useState([]);
