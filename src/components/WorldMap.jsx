@@ -91,13 +91,6 @@ export default function MapComponent() {
   };
 
   const saveDataToDatabase = useCallback(async () => {
-    if (!userId) {
-      console.error(
-        "Invalid userId. Unable to create Firestore document reference."
-      );
-      return;
-    }
-
     const docRef = doc(usersRef, userId);
 
     // Update the user with the visitedCountries and bucketList arrays
