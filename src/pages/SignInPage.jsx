@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "./sign.css";
 
 export const SignInPage = () => {
+  // created by Maciek and Nina
+
   const [errorMessage, setErrorMessage] = useState("");
   const auth = getAuth();
 

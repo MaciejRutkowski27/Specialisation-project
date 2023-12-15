@@ -1,0 +1,33 @@
+.path-icons {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 10%;
+  width: 90%;
+  align-items: flex-start;
+}
+
+.path-icons-two {
+  display: flex;
+  flex-direction: column;
+}
+
+.picture-trip {
+  height: 27vh;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.friends-container {
+  display: flex;
+}
+
+.friend-trip {
+  margin-right: 1rem;
+}
+
+.activities-picture-trip {
+  width: 100%;
+  height: 25vh;
+  border-radius: 20px;
+}

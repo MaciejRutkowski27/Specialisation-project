@@ -8,18 +8,23 @@ import "./createPage.css";
 import ProgressBar from "../assets/progress3.svg";
 
 export const CreateActivitiesPage = () => {
+  // created by Nina
+
+  // all the states
   const [trip, setTrip] = useState();
   const [tripTags, setTripTags] = useState([]);
   const [destination, setDestination] = useState("");
   const [activities, setActivities] = useState([]);
   const [dateArray, setDateArray] = useState([]);
   const [days, setDays] = useState();
+
   const params = useParams();
   const navigate = useNavigate();
   const tripId = params.tripId;
   const url =
     "https://trip-simple-20c18-default-rtdb.europe-west1.firebasedatabase.app/activities.json";
 
+  // getting the activities from the realtime database
   useEffect(() => {
     async function getActivities() {
       if (destination) {
@@ -27,7 +32,7 @@ export const CreateActivitiesPage = () => {
         if (response.ok) {
           const data = await response.json();
 
-          // Filter the ventures based on the destination
+          // Filter the ventures based on the destination of the trip
           const matchingVentures = Object.keys(data)
             .filter(
               (activityId) => data[activityId].destination === destination
@@ -48,14 +53,14 @@ export const CreateActivitiesPage = () => {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    // Pad single-digit day and month with leading zeros
+    // Pad single-digit day and month with leading zeros - for nicer appearance
     const formattedDay = day < 10 ? `0${day}` : day;
     const formattedMonth = month < 10 ? `0${month}` : month;
 
     return `${formattedDay}.${formattedMonth}.${year}`;
   };
 
-  // two useEffects to avoid re rendering
+  // two useEffects to avoid re-rendering
   useEffect(() => {
     async function getTrip() {
       const docRef = doc(tripsRef, tripId);
@@ -96,6 +101,7 @@ export const CreateActivitiesPage = () => {
   // Order the list based on the similarity score in descending order
   const orderedList = scoredList.sort((a, b) => b.score - a.score);
 
+  // getting three activities for each day
   const getActivitiesForDay = (dayIndex) => {
     const startIndex = dayIndex * 3;
     const endIndex = startIndex + 3;
@@ -120,7 +126,8 @@ export const CreateActivitiesPage = () => {
     navigate(`/trip/${tripId}`);
   }
 
-  async function deletePost() {
+  // delete the trip
+  async function deleteTrip() {
     const confirmDelete = window.confirm("Do you want to delete this trip?");
     if (confirmDelete) {
       const docRef = doc(tripsRef, tripId);
@@ -135,7 +142,7 @@ export const CreateActivitiesPage = () => {
       aria-labelledby="activities-heading"
     >
       <img
-        onClick={deletePost}
+        onClick={deleteTrip}
         src={Close}
         alt="Delete the trip and go back to home page."
         role="button"

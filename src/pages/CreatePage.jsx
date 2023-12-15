@@ -10,6 +10,8 @@ import Placeholder from "../assets/placeholder.webp";
 import ProgressBar from "../assets/progress1.svg";
 
 export const CreatePage = () => {
+  // created by Nina
+
   const auth = getAuth();
   const navigate = useNavigate();
 
@@ -74,6 +76,7 @@ export const CreatePage = () => {
     navigate(`/trips/tags/${newTripId}`);
   }
 
+  // this is for the warning if the length of the trip exceeds the the activities limit
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
     updateWarningMessage(e.target.value, endDate);
@@ -98,16 +101,23 @@ export const CreatePage = () => {
     }
   };
 
+  // getting all the users so the user can choose participants for the trip
   useEffect(() => {
     onSnapshot(usersRef, (data) => {
-      const friendsData = data.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      const friendsData = data.docs
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+
+        // excluding the user creating the trip - so they dont add themselves
+        .filter((friend) => friend.id !== auth.currentUser.uid);
+
       setFriends(friendsData);
     });
-  }, []);
+  }, [auth.currentUser.uid]);
 
+  // adding the users (friends) to the trip
   const handleAddButton = (id) => {
     const friendToAdd = friends.find((friend) => friend.id === id);
 
@@ -264,8 +274,8 @@ export const CreatePage = () => {
             <button
               className={
                 addedFriends.some((addedFriend) => addedFriend.id === friend.id)
-                  ? "button-yellow"
-                  : "button-white"
+                  ? "button-white"
+                  : "button-yellow"
               }
               type="button"
               onClick={() => handleAddButton(friend.id)}

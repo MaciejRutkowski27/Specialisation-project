@@ -8,8 +8,11 @@ import { Link } from "react-router-dom";
 import "./top.css";
 
 export const TopPart = () => {
+  // top part of the map page and discover page
+
   const [picture, setPicture] = useState("");
   const auth = getAuth();
+
   // getting the information about the user
   useEffect(() => {
     async function getUser() {

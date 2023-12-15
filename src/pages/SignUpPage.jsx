@@ -6,6 +6,8 @@ import { usersRef } from "../config/Firebase";
 import "./sign.css";
 
 export const SignUpPage = () => {
+  // created by Maciek and Nina
+
   const [username, setUserName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -37,6 +39,7 @@ export const SignUpPage = () => {
   }
 
   return (
+    // + added ARIA labels
     <section className="container" aria-labelledby="signup-heading">
       <img
         className="png"
