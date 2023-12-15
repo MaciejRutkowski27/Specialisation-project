@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { tripsRef } from "../config/Firebase";
 import { Link } from "react-router-dom";
+import { Navigation } from "../components/Navigation";
 
 import Placeholder from "../assets/placeholder.webp";
 import HomeFilled from "../assets/filled_home.svg";
@@ -93,6 +94,7 @@ export const TripPage = () => {
 
   return (
     <section className="space-bottom">
+      <Navigation />
       <section style={{ position: "relative" }}>
         <img className="picture-trip" src={picture} alt="Trip" />
         <div className="path-icons general-margin">

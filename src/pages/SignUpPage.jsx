@@ -1,19 +1,15 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { usersRef } from "../config/Firebase";
 import "./sign.css";
 
-export const SignUpPage = ({ showLoader }) => {
+export const SignUpPage = () => {
   // created by Maciek and Nina
 
   const [username, setUserName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    showLoader(false);
-  }, [showLoader]);
 
   const auth = getAuth();
 

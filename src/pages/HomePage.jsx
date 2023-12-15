@@ -9,14 +9,10 @@ import { Link } from "react-router-dom";
 import "./homePage.css";
 import { TripCard } from "../components/TripCard";
 
-export const HomePage = ({ showLoader }) => {
+export const HomePage = () => {
   // created by Nina
 
   const [trips, setTrips] = useState([]);
-
-  useEffect(() => {
-    showLoader(false);
-  }, [showLoader]);
 
   // getting the trip data
   useEffect(() => {

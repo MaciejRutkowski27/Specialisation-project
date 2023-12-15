@@ -1,17 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import "./sign.css";
 
-export const SignInPage = ({ showLoader }) => {
+export const SignInPage = () => {
   // created by Maciek and Nina
 
   const [errorMessage, setErrorMessage] = useState("");
   const auth = getAuth();
-
-  useEffect(() => {
-    showLoader(false);
-  }, [showLoader]);
 
   function signIn(event) {
     event.preventDefault();
