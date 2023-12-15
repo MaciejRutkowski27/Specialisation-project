@@ -10,6 +10,7 @@ export default function MapComponent() {
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [countries, setCountries] = useState([]);
   const [visitedCountries, setVisitedCountries] = useState([]);
+  const [bucketlist, setBucketlist] = useState([]);
   const [selectedPaths, setSelectedPaths] = useState([]);
   const [popupImage, setPopupImage] = useState("");
 
@@ -26,24 +27,10 @@ export default function MapComponent() {
   const handleClick = (event) => {
     const clickedPathId = event.target.id;
 
-    // Find the selected country based on the clicked path id
-    const selectedCountry = countries.find(
-      (country) => country.id === clickedPathId
-    );
-
-    // Update the selected country information
-    // setSelectedCountry(selectedCountry);
-    setVisitedCountries((prevVisitedCountries) =>
-      isPathSelected
-        ? prevVisitedCountries.filter((country) => country.id !== clickedPathId)
-        : [...prevVisitedCountries, selectedCountry]
-    );
-
     // Check if the clicked path is already selected
     const isPathSelected = selectedPaths.includes(clickedPathId);
 
     // Update the selected paths array
-
     setSelectedPaths((prevSelectedPaths) =>
       isPathSelected
         ? prevSelectedPaths.filter((path) => path !== clickedPathId)
@@ -75,25 +62,67 @@ export default function MapComponent() {
   const hidePopup = () => {
     setPopupVisible(false);
   };
+  const handlePathClick = (event) => {
+    // Handle path click logic here
+    handleClick(event);
+    showPopup(event);
+  };
 
-  const handleButtonClick = (buttonText) => {
-    const path = document.getElementById(pathId);
+const handleButtonClick = (buttonText) => {
+  const path = document.getElementById(pathId);
 
-    if (path) {
+  if (path) {
+    // Find the selected country based on the clicked path id
+    const selectedCountry = countries.find((country) => country.id === pathId);
+
+    // Check if the selected country is already in the corresponding state
+    const isCountryInState = (country, state) =>
+      state.some((c) => c.id === country.id);
+
+    // Check if the button was clicked again
+    const isButtonClickedAgain =
+      buttonText === "Bucketlist"
+        ? isCountryInState(selectedCountry, bucketlist)
+        : isCountryInState(selectedCountry, visitedCountries);
+
+    if (isButtonClickedAgain) {
+      // Reset the path color and remove the country from the state
+      path.setAttribute("fill", ""); // Set it to the default color or remove the attribute for SVGs
       if (buttonText === "Bucketlist") {
-        // Change path fill color to red
-        path.setAttribute("fill", "red");
+        setBucketlist((prevBucketlist) =>
+          prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+        );
       } else if (buttonText === "Visited") {
-        // Change path fill color to green
-        path.setAttribute("fill", "green");
+        setVisitedCountries((prevVisitedCountries) =>
+          prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
+        );
       }
     } else {
-      console.error(`Path with ID ${pathId} not found.`);
-    }
+      // Change path fill color based on the buttonText
+      path.setAttribute("fill", buttonText === "Bucketlist" ? "red" : "green");
 
-    console.log(`${buttonText} button clicked`);
-    hidePopup();
-  };
+      // Update the appropriate state based on buttonText
+      if (buttonText === "Bucketlist") {
+        setBucketlist((prevBucketlist) =>
+          isCountryInState(selectedCountry, prevBucketlist)
+            ? prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+            : [...prevBucketlist, selectedCountry]
+        );
+      } else if (buttonText === "Visited") {
+        setVisitedCountries((prevVisitedCountries) =>
+          isCountryInState(selectedCountry, prevVisitedCountries)
+            ? prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
+            : [...prevVisitedCountries, selectedCountry]
+        );
+      }
+    }
+  } else {
+    console.error(`Path with ID ${pathId} not found.`);
+  }
+
+  hidePopup();
+};
+
   return (
     <>
       <div>
@@ -1872,12 +1901,19 @@ export default function MapComponent() {
           Click on the country to mark it as visited or on your bucket list{" "}
         </p>
         <div className="countrylists">
-          <div className="bucketlist">
+          <span className="bucketcontent">
             <p className="undermap">Bucket list</p>
-          </div>
+            {bucketlist.map((bucketItem, index) => (
+              <div key={index} className="bucket-item">
+                {bucketItem.flag && (
+                  <img className="flag" src={bucketItem.flag} alt="" />
+                )}
+                <p>{bucketItem.name}</p>
+              </div>
+            ))}
+          </span>
           <span className="bucketcontent">
             <p className="undermap">Visited</p>
-
             {visitedCountries.map((visitedCountry, index) => (
               <div key={index} className="visited">
                 {visitedCountry.flag && (
@@ -1890,10 +1926,7 @@ export default function MapComponent() {
               <div
                 key={country.id}
                 id={country.id}
-                onClick={(event) => {
-                  handleClick(event);
-                  showPopup(event);
-                }}
+                onClick={(event) => handlePathClick(event)}
                 className={selectedPaths.includes(country.id) ? "selected" : ""}
               ></div>
             ))}
