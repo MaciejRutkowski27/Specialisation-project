@@ -7,6 +7,7 @@ export const TripCardProfile = ({ trip }) => {
 
   return (
     <section
+      className="trip-card-profile"
       onClick={() => navigate(`/trip/${trip.id}`)}
       style={{ position: "relative" }}
     >

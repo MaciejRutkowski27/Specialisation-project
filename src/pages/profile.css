@@ -26,6 +26,10 @@
   color: var(--yellow);
 }
 
+.trip-card-profile {
+  margin-bottom: 0.7rem;
+}
+
 .trip-picture-profile {
   width: 100%;
   height: 20vh;
@@ -34,4 +38,9 @@
 
 .small-nav {
   display: flex;
+  margin-bottom: 1rem;
+}
+
+.small-nav-button {
+  margin-right: 1rem;
 }

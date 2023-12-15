@@ -22,6 +22,10 @@ body.dark-theme {
   color: var(--yellow);
 }
 
+.space-bottom {
+  margin-bottom: 10vh;
+}
+
 /*Animation styling */
 /* Container */
 .section {

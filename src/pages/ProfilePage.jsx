@@ -93,7 +93,7 @@ export const ProfilePage = () => {
   };
 
   return (
-    <section className="page">
+    <section className=" space-bottom">
       <Navigation />
       <section className="general-margin">
         <section className="profile-top">
@@ -118,11 +118,30 @@ export const ProfilePage = () => {
           </Link>
         </section>
         <nav className="small-nav">
-          <h3 onClick={() => handleActiveLinkChange("upcoming")}>
+          <h3
+            className={`small-nav-button ${
+              activeLink === "upcoming" ? "yellow" : ""
+            }`}
+            onClick={() => handleActiveLinkChange("upcoming")}
+          >
             My upcoming
           </h3>
-          <h3 onClick={() => handleActiveLinkChange("friends")}>Friends</h3>
-          <h3 onClick={() => handleActiveLinkChange("past")}>Past</h3>
+          <h3
+            className={`small-nav-button ${
+              activeLink === "friends" ? "yellow" : ""
+            }`}
+            onClick={() => handleActiveLinkChange("friends")}
+          >
+            Friends
+          </h3>
+          <h3
+            className={`small-nav-button ${
+              activeLink === "past" ? "yellow" : ""
+            }`}
+            onClick={() => handleActiveLinkChange("past")}
+          >
+            Past
+          </h3>
         </nav>
         <section>
           {displayedTrips.map((trip) => (
