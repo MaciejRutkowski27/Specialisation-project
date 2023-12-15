@@ -15,7 +15,6 @@ export default function MapComponent() {
   const [selectedPaths, setSelectedPaths] = useState([]);
   const [popupImage, setPopupImage] = useState("");
   const [userId, setUserId] = useState();
-  const [user, setUser] = useState({});
 
   const auth = getAuth();
 
@@ -27,7 +26,6 @@ export default function MapComponent() {
         setUserId(auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
         if (userData) {
-          setUser(userData);
           setVisitedCountries(userData.visited);
           setBucketlist(userData.bucket);
         }
