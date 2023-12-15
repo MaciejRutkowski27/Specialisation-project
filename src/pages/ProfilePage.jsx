@@ -14,8 +14,13 @@ export const ProfilePage = () => {
   const [user, setUser] = useState({});
   const [userId, setUserId] = useState();
   const [trips, setTrips] = useState([]);
-  const [filteredTrips, setFilteredTrips] = useState([]);
+  const [upcomingTrips, setUpcomingTrips] = useState([]);
   const [filteredLength, setFilteredLength] = useState();
+  const [activeLink, setActiveLink] = useState();
+  const [displayedTrips, setDisplayedTrips] = useState([]);
+  const [friendTrips, setFriendTrips] = useState([]);
+  const [pastTrips, setPastTrips] = useState([]);
+
   const auth = getAuth();
 
   // getting the information about the user
@@ -42,12 +47,36 @@ export const ProfilePage = () => {
     });
   }, [auth.currentUser]);
 
-  // filteredTrips for the trips that were created by the user
   useEffect(() => {
+    // upcomingTrips for the trips that were created by the user
     const filtered = trips.filter((trip) => trip.uid === userId);
-    setFilteredTrips(filtered);
-    setFilteredLength(filteredTrips.length);
-  }, [trips, userId, filteredTrips.length]);
+    setUpcomingTrips(filtered);
+    setFilteredLength(upcomingTrips.length);
+
+    // Update friendTrips based on friends' uids
+    const withFriends = trips.filter((trip) =>
+      trip.addedFriends.some((friend) => friend.id === userId)
+    );
+    setFriendTrips(withFriends);
+  }, [trips, userId, upcomingTrips.length]);
+
+  // Update displayedTrips based on the activeLink
+  useEffect(() => {
+    if (activeLink === "upcoming") {
+      setDisplayedTrips(upcomingTrips);
+    } else if (activeLink === "friends") {
+      setDisplayedTrips(friendTrips);
+    } else if (activeLink === "past") {
+      setDisplayedTrips(pastTrips);
+    } else {
+      // Default is for upcoming
+      setDisplayedTrips(upcomingTrips);
+    }
+  }, [activeLink, upcomingTrips, friendTrips, pastTrips]);
+
+  const handleActiveLinkChange = (link) => {
+    setActiveLink(link);
+  };
 
   return (
     <section className="page">
@@ -74,8 +103,15 @@ export const ProfilePage = () => {
             <img src={Settings} alt="Edit your profile" />
           </Link>
         </section>
+        <nav className="small-nav">
+          <h3 onClick={() => handleActiveLinkChange("upcoming")}>
+            My upcoming
+          </h3>
+          <h3 onClick={() => handleActiveLinkChange("friends")}>Friends</h3>
+          <h3 onClick={() => handleActiveLinkChange("past")}>Past</h3>
+        </nav>
         <section>
-          {filteredTrips.map((trip) => (
+          {displayedTrips.map((trip) => (
             <TripCardProfile key={trip.id} trip={trip} />
           ))}
         </section>

@@ -31,3 +31,7 @@
   height: 20vh;
   border-radius: 20px;
 }
+
+.small-nav {
+  display: flex;
+}
