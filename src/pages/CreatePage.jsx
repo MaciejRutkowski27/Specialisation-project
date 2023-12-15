@@ -264,8 +264,8 @@ export const CreatePage = () => {
             <button
               className={
                 addedFriends.some((addedFriend) => addedFriend.id === friend.id)
-                  ? "button-yellow"
-                  : "button-white"
+                  ? "button-white"
+                  : "button-yellow"
               }
               type="button"
               onClick={() => handleAddButton(friend.id)}
