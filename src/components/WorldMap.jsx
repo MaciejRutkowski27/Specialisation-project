@@ -86,17 +86,14 @@ const handleButtonClick = (buttonText) => {
         : isCountryInState(selectedCountry, visitedCountries);
 
     if (isButtonClickedAgain) {
-      // Reset the path color and remove the country from the state
+      // Reset the path color and remove the country from both states
       path.setAttribute("fill", ""); // Set it to the default color or remove the attribute for SVGs
-      if (buttonText === "Bucketlist") {
-        setBucketlist((prevBucketlist) =>
-          prevBucketlist.filter((c) => c.id !== selectedCountry.id)
-        );
-      } else if (buttonText === "Visited") {
-        setVisitedCountries((prevVisitedCountries) =>
-          prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
-        );
-      }
+      setBucketlist((prevBucketlist) =>
+        prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+      );
+      setVisitedCountries((prevVisitedCountries) =>
+        prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
+      );
     } else {
       // Change path fill color based on the buttonText
       path.setAttribute("fill", buttonText === "Bucketlist" ? "red" : "green");
@@ -108,11 +105,17 @@ const handleButtonClick = (buttonText) => {
             ? prevBucketlist.filter((c) => c.id !== selectedCountry.id)
             : [...prevBucketlist, selectedCountry]
         );
+        setVisitedCountries((prevVisitedCountries) =>
+          prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
+        );
       } else if (buttonText === "Visited") {
         setVisitedCountries((prevVisitedCountries) =>
           isCountryInState(selectedCountry, prevVisitedCountries)
             ? prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
             : [...prevVisitedCountries, selectedCountry]
+        );
+        setBucketlist((prevBucketlist) =>
+          prevBucketlist.filter((c) => c.id !== selectedCountry.id)
         );
       }
     }
@@ -122,6 +125,7 @@ const handleButtonClick = (buttonText) => {
 
   hidePopup();
 };
+
 
   return (
     <>
