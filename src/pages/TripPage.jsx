@@ -9,6 +9,8 @@ import Placeholder from "../assets/placeholder.webp";
 import HomeFilled from "../assets/filled_home.svg";
 
 export const TripPage = () => {
+  // created by Nina
+
   // states
   const [activities, setActivities] = useState([]);
   const [name, setName] = useState("");

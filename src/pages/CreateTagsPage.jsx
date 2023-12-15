@@ -8,13 +8,17 @@ import "./createPage.css";
 import ProgressBar from "../assets/progress2.svg";
 
 export const CreateTagsPage = () => {
+  // created by Nina
+
   const params = useParams();
   const navigate = useNavigate();
   const tripId = params.tripId;
 
+  // all the states
   const [tags, setTags] = useState([]);
   const [chosenTags, setChosenTags] = useState([]);
 
+  // getting all the tags
   useEffect(() => {
     onSnapshot(tagsRef, (data) => {
       const tagsData = data.docs.map((doc) => ({
@@ -27,10 +31,10 @@ export const CreateTagsPage = () => {
 
   function handleTagClick(name) {
     if (chosenTags.includes(name)) {
-      // If present, remove it from the array
+      // If the tag is present, remove it from the array
       setChosenTags((prevTags) => prevTags.filter((tag) => tag !== name));
     } else {
-      // If not present, add it to the array
+      // If the tag is not present, add it to the array
       setChosenTags((prevTags) => [...prevTags, name]);
     }
   }
@@ -46,7 +50,8 @@ export const CreateTagsPage = () => {
     navigate(`/trips/activities/${tripId}`);
   }
 
-  async function deletePost() {
+  // deleting the trip itself
+  async function deleteTrip() {
     const confirmDelete = window.confirm("Do you want to delete this trip?");
     if (confirmDelete) {
       const docRef = doc(tripsRef, tripId);
@@ -58,7 +63,7 @@ export const CreateTagsPage = () => {
   return (
     <section className="general-margin" aria-labelledby="choose-tags-heading">
       <img
-        onClick={deletePost}
+        onClick={deleteTrip}
         src={Close}
         alt="Delete the trip and go back to the home page."
         role="button"

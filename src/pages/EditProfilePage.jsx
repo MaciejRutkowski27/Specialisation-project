@@ -10,6 +10,9 @@ import { Navigation } from "../components/Navigation";
 import "./profile.css";
 
 export const EditProfilePage = () => {
+  // created by Nina
+
+  // all the states
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState("");
@@ -70,6 +73,8 @@ export const EditProfilePage = () => {
       <Navigation />
       <section className="general-margin">
         <h1>Profile</h1>
+
+        {/* possibility of customisation */}
         <LightMode />
         <DarkMode />
         <form onSubmit={handleSubmit}>

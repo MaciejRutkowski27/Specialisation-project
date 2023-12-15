@@ -7,6 +7,8 @@ import FilledHome from "../assets/filled_home.svg";
 import FilledMap from "../assets/filled_map.svg";
 
 export const Navigation = () => {
+  // created by Nina
+
   const location = useLocation();
   return (
     <nav className="navigation" aria-label="Main Navigation">
@@ -29,6 +31,7 @@ export const Navigation = () => {
       </NavLink>
       <NavLink to="/map" aria-label="Map">
         <img
+          // checking the location in order to display the right icon
           className={`icon ${location.pathname === "/map" ? "hidden" : ""}`}
           src={Map}
           alt="Go to map"

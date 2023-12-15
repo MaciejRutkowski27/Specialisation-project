@@ -35,6 +35,8 @@ export default function App() {
     });
   }, []);
 
+  // paths by Nina and Maciek
+
   // variable holding all private routes including the nav bar
   const privateRoutes = (
     <>
@@ -55,7 +57,7 @@ export default function App() {
     </>
   );
 
-  // variable holding all public routes
+  // variable holding all public routes - before log in
   const publicRoutes = (
     <Routes>
       <Route path="/animation" element={<TripAnimation />} />

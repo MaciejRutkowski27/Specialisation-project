@@ -11,6 +11,9 @@ import "./profile.css";
 import Settings from "../assets/settings_icon.svg";
 
 export const ProfilePage = () => {
+  // created by Nina
+
+  // all the states
   const [user, setUser] = useState({});
   const [userId, setUserId] = useState();
   const [trips, setTrips] = useState([]);
@@ -48,14 +51,14 @@ export const ProfilePage = () => {
   }, [auth.currentUser]);
 
   useEffect(() => {
-    // upcomingTrips for the trips that were created by the user
+    // filtering upcomingTrips for the trips that were created by the user
     const filteredUpcomingTrips = trips.filter((trip) => {
       return trip.uid === userId && new Date(trip.endDate) > new Date();
     });
     setUpcomingTrips(filteredUpcomingTrips);
     setFilteredLength(filteredUpcomingTrips.length);
 
-    // Update friendTrips based on friends' uids and endDate
+    // filtering friendTrips based on friends' uids and endDate
     const filteredFriendTrips = trips.filter((trip) => {
       return (
         trip.addedFriends.some((friend) => friend.id === userId) &&
@@ -64,7 +67,7 @@ export const ProfilePage = () => {
     });
     setFriendTrips(filteredFriendTrips);
 
-    // Update pastTrips based on trips that were created by the user or included as a friend and ended in the past
+    // filtering pastTrips based on trips that were created by the user or included as a friend and ended in the past
     const filteredPastTrips = trips.filter(
       (trip) =>
         (trip.uid === userId ||
@@ -74,7 +77,7 @@ export const ProfilePage = () => {
     setPastTrips(filteredPastTrips);
   }, [trips, userId, upcomingTrips.length]);
 
-  // Update displayedTrips based on the activeLink
+  // updating displayedTrips based on the activeLink
   useEffect(() => {
     if (activeLink === "upcoming") {
       setDisplayedTrips(upcomingTrips);
@@ -83,7 +86,7 @@ export const ProfilePage = () => {
     } else if (activeLink === "past") {
       setDisplayedTrips(pastTrips);
     } else {
-      // Default is for upcoming
+      // Default is for upcoming - so "upcoming" in small navigation is yellow
       setDisplayedTrips(upcomingTrips);
     }
   }, [activeLink, upcomingTrips, friendTrips, pastTrips]);
@@ -93,9 +96,9 @@ export const ProfilePage = () => {
   };
 
   return (
-    <section className=" space-bottom">
+    <section className="space-bottom" aria-live="polite">
       <Navigation />
-      <section className="general-margin">
+      <section className="general-margin" aria-label="Profile Section">
         <section className="profile-top">
           <div className="picture-username-profile">
             <div className="circle_image_container_profile">
@@ -103,13 +106,21 @@ export const ProfilePage = () => {
                 className="circle_image"
                 src={user.picture || Placeholder}
                 alt="Your profile picture"
+                aria-labelledby="username"
               />
             </div>
             <div>
-              <h3>{user.username}</h3>
-              <div className="trip-count">
-                <h3 className="yellow">{filteredLength}</h3>
-                <p className="yellow">Trips</p>
+              <h3 id="username">{user.username}</h3>
+              <div
+                className="trip-count"
+                aria-label={`${filteredLength} Trips`}
+              >
+                <h3 className="yellow" aria-hidden="true">
+                  {filteredLength}
+                </h3>
+                <p className="yellow" aria-hidden="true">
+                  Trips
+                </p>
               </div>
             </div>
           </div>
@@ -123,6 +134,8 @@ export const ProfilePage = () => {
               activeLink === "upcoming" ? "yellow" : ""
             }`}
             onClick={() => handleActiveLinkChange("upcoming")}
+            role="button"
+            tabIndex="0"
           >
             My upcoming
           </h3>
@@ -131,6 +144,9 @@ export const ProfilePage = () => {
               activeLink === "friends" ? "yellow" : ""
             }`}
             onClick={() => handleActiveLinkChange("friends")}
+            role="button"
+            // tabIndex added to the navigation buttons to make them focusable and triggerable with the keyboard
+            tabIndex="0"
           >
             Friends
           </h3>
@@ -139,11 +155,13 @@ export const ProfilePage = () => {
               activeLink === "past" ? "yellow" : ""
             }`}
             onClick={() => handleActiveLinkChange("past")}
+            role="button"
+            tabIndex="0"
           >
             Past
           </h3>
         </nav>
-        <section>
+        <section aria-label="Trips Section">
           {displayedTrips.map((trip) => (
             <TripCardProfile key={trip.id} trip={trip} />
           ))}

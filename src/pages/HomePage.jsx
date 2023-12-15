@@ -10,6 +10,8 @@ import "./homePage.css";
 import { TripCard } from "../components/TripCard";
 
 export const HomePage = () => {
+  // created by Nina
+
   const [trips, setTrips] = useState([]);
 
   // getting the trip data

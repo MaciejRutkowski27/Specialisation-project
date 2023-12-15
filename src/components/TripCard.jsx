@@ -3,6 +3,8 @@ import Placeholder from "../assets/placeholder.webp";
 import "../pages/homePage.css";
 
 export const TripCard = ({ trip }) => {
+  // component created by Nina
+
   const navigate = useNavigate();
 
   return (
