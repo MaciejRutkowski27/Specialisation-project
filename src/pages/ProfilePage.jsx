@@ -1,104 +1,80 @@
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { usersRef } from "../config/Firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { usersRef, tripsRef } from "../config/Firebase";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import Placeholder from "../assets/placeholder.webp";
-import { LightMode } from "../components/themes/LightMode";
-import { DarkMode } from "../components/themes/DarkMode";
 import { Navigation } from "../components/Navigation";
+import { TripCard } from "../components/TripCard";
+
+import "./profile.css";
+import Settings from "../assets/settings_icon.svg";
 
 export const ProfilePage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [picture, setPicture] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [user, setUser] = useState({});
+  const [userId, setUserId] = useState();
+  const [trips, setTrips] = useState([]);
+  const [filteredTrips, setFilteredTrips] = useState([]);
+  const [filteredLength, setFilteredLength] = useState();
   const auth = getAuth();
 
   // getting the information about the user
   useEffect(() => {
     async function getUser() {
       if (auth.currentUser) {
-        setEmail(auth.currentUser.email);
         const docRef = doc(usersRef, auth.currentUser.uid);
+        setUserId(auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
         if (userData) {
-          setName(userData.name);
-          setPicture(userData.image || Placeholder);
+          setUser(userData);
         }
       }
     }
     getUser();
+
+    // getting all the trips
+    onSnapshot(tripsRef, (data) => {
+      const tripsData = data.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTrips(tripsData);
+    });
   }, [auth.currentUser]);
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    const userToUpdate = {
-      name: name,
-      email: email,
-      picture: picture,
-    };
-
-    const docRef = doc(usersRef, auth.currentUser.uid);
-    await updateDoc(docRef, userToUpdate);
-  }
-
-  function handleImageChange(event) {
-    const file = event.target.files[0];
-    if (file.size < 500000) {
-      // image file size must be below 0,5MB
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setPicture(event.target.result);
-      };
-      reader.readAsDataURL(file);
-      setErrorMessage(""); // reset errorMessage state
-    } else {
-      // if not below 0.5MB display an error message using the errorMessage state
-      setErrorMessage("The image file is too big!");
-    }
-  }
-
-  function handleSignOut() {
-    signOut(auth); // sign out from firebase/auth
-  }
+  // filteredTrips for the trips that were created by the user
+  useEffect(() => {
+    const filtered = trips.filter((trip) => trip.uid === userId);
+    setFilteredTrips(filtered);
+    setFilteredLength(filteredTrips.length);
+  }, [trips, userId, filteredTrips.length]);
 
   return (
     <section className="page">
       <Navigation />
-      <h1>Profile</h1>
-      <LightMode />
-      <DarkMode />
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            name="name"
-            placeholder="Type name"
-          />
-        </label>
-        <label>
-          Image
-          <input
-            type="file"
-            className="file-input"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-          <img
-            className="picture"
-            src={picture}
-            alt="Choose"
-            onError={(event) => (event.target.src = Placeholder)}
-          />
-        </label>
-        <p className="text-error">{errorMessage}</p>
-        <button>Save User</button>
-      </form>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <section className="general-margin">
+        <section className="profile-top">
+          <div className="circle_image_container_profile">
+            <img
+              className="circle_image"
+              src={user.picture || Placeholder}
+              alt="Your profile picture"
+            />
+          </div>
+          <div>
+            <h3>{user.username}</h3>
+            <div>
+              <h3></h3>
+              <p>{filteredLength}</p>
+            </div>
+          </div>
+          <img src={Settings} alt="Edit your profile" />
+        </section>
+        <section>
+          {filteredTrips.map((trip) => (
+            <TripCard key={trip.id} trip={trip} />
+          ))}
+        </section>
+      </section>
     </section>
   );
 };
