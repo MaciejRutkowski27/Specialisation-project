@@ -1,0 +1,12 @@
+.profile-top {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.circle_image_container_profile {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
