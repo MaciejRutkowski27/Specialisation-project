@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { onSnapshot } from "firebase/firestore";
-import { countriesRef } from "../config/Firebase";
+import { useState, useEffect, useCallback } from "react";
+import { getAuth } from "firebase/auth";
+import { onSnapshot, doc, getDoc, updateDoc } from "firebase/firestore";
+import { countriesRef, usersRef } from "../config/Firebase";
 import "./map.css";
 
 export default function MapComponent() {
@@ -13,6 +14,27 @@ export default function MapComponent() {
   const [bucketlist, setBucketlist] = useState([]);
   const [selectedPaths, setSelectedPaths] = useState([]);
   const [popupImage, setPopupImage] = useState("");
+  const [userId, setUserId] = useState();
+  const [user, setUser] = useState({});
+
+  const auth = getAuth();
+
+  // getting the information about the user
+  useEffect(() => {
+    async function getUser() {
+      if (auth.currentUser) {
+        const docRef = doc(usersRef, auth.currentUser.uid);
+        setUserId(auth.currentUser.uid);
+        const userData = (await getDoc(docRef)).data();
+        if (userData) {
+          setUser(userData);
+          setVisitedCountries(userData.visited);
+          setBucketlist(userData.bucket);
+        }
+      }
+    }
+    getUser();
+  }, [auth.currentUser]);
 
   useEffect(() => {
     onSnapshot(countriesRef, (data) => {
@@ -68,64 +90,90 @@ export default function MapComponent() {
     showPopup(event);
   };
 
-const handleButtonClick = (buttonText) => {
-  const path = document.getElementById(pathId);
-
-  if (path) {
-    // Find the selected country based on the clicked path id
-    const selectedCountry = countries.find((country) => country.id === pathId);
-
-    // Check if the selected country is already in the corresponding state
-    const isCountryInState = (country, state) =>
-      state.some((c) => c.id === country.id);
-
-    // Check if the button was clicked again
-    const isButtonClickedAgain =
-      buttonText === "Bucketlist"
-        ? isCountryInState(selectedCountry, bucketlist)
-        : isCountryInState(selectedCountry, visitedCountries);
-
-    if (isButtonClickedAgain) {
-      // Reset the path color and remove the country from both states
-      path.setAttribute("fill", ""); // Set it to the default color or remove the attribute for SVGs
-      setBucketlist((prevBucketlist) =>
-        prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+  const saveDataToDatabase = useCallback(async () => {
+    if (!userId) {
+      console.error(
+        "Invalid userId. Unable to create Firestore document reference."
       );
-      setVisitedCountries((prevVisitedCountries) =>
-        prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
-      );
-    } else {
-      // Change path fill color based on the buttonText
-      path.setAttribute("fill", buttonText === "Bucketlist" ? "red" : "green");
+      return;
+    }
 
-      // Update the appropriate state based on buttonText
-      if (buttonText === "Bucketlist") {
+    const docRef = doc(usersRef, userId);
+
+    // Update the user with the visitedCountries and bucketList arrays
+    await updateDoc(docRef, {
+      visited: visitedCountries,
+      bucket: bucketlist,
+    });
+  }, [userId, visitedCountries, bucketlist]);
+
+  useEffect(() => {
+    saveDataToDatabase();
+  }, [saveDataToDatabase]);
+
+  const handleButtonClick = (buttonText) => {
+    const path = document.getElementById(pathId);
+
+    if (path) {
+      // Find the selected country based on the clicked path id
+      const selectedCountry = countries.find(
+        (country) => country.id === pathId
+      );
+
+      // Check if the selected country is already in the corresponding state
+      const isCountryInState = (country, state) =>
+        state.some((c) => c.id === country.id);
+
+      // Check if the button was clicked again
+      const isButtonClickedAgain =
+        buttonText === "Bucketlist"
+          ? isCountryInState(selectedCountry, bucketlist)
+          : isCountryInState(selectedCountry, visitedCountries);
+
+      if (isButtonClickedAgain) {
+        // Reset the path color and remove the country from both states
+        path.setAttribute("fill", ""); // Set it to the default color or remove the attribute for SVGs
         setBucketlist((prevBucketlist) =>
-          isCountryInState(selectedCountry, prevBucketlist)
-            ? prevBucketlist.filter((c) => c.id !== selectedCountry.id)
-            : [...prevBucketlist, selectedCountry]
+          prevBucketlist.filter((c) => c.id !== selectedCountry.id)
         );
         setVisitedCountries((prevVisitedCountries) =>
           prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
         );
-      } else if (buttonText === "Visited") {
-        setVisitedCountries((prevVisitedCountries) =>
-          isCountryInState(selectedCountry, prevVisitedCountries)
-            ? prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
-            : [...prevVisitedCountries, selectedCountry]
+      } else {
+        // Change path fill color based on the buttonText
+        path.setAttribute(
+          "fill",
+          buttonText === "Bucketlist" ? "red" : "green"
         );
-        setBucketlist((prevBucketlist) =>
-          prevBucketlist.filter((c) => c.id !== selectedCountry.id)
-        );
+
+        // Update the appropriate state based on buttonText
+        if (buttonText === "Bucketlist") {
+          setBucketlist((prevBucketlist) =>
+            isCountryInState(selectedCountry, prevBucketlist)
+              ? prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+              : [...prevBucketlist, selectedCountry]
+          );
+          setVisitedCountries((prevVisitedCountries) =>
+            prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
+          );
+        } else if (buttonText === "Visited") {
+          setVisitedCountries((prevVisitedCountries) =>
+            isCountryInState(selectedCountry, prevVisitedCountries)
+              ? prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
+              : [...prevVisitedCountries, selectedCountry]
+          );
+          setBucketlist((prevBucketlist) =>
+            prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+          );
+        }
       }
+    } else {
+      console.error(`Path with ID ${pathId} not found.`);
     }
-  } else {
-    console.error(`Path with ID ${pathId} not found.`);
-  }
 
-  hidePopup();
-};
-
+    saveDataToDatabase();
+    hidePopup();
+  };
 
   return (
     <>
