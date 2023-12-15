@@ -4,7 +4,8 @@ import { usersRef, tripsRef } from "../config/Firebase";
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import Placeholder from "../assets/placeholder.webp";
 import { Navigation } from "../components/Navigation";
-import { TripCard } from "../components/TripCard";
+import { TripCardProfile } from "../components/TripCardProfile";
+import { Link } from "react-router-dom";
 
 import "./profile.css";
 import Settings from "../assets/settings_icon.svg";
@@ -53,7 +54,7 @@ export const ProfilePage = () => {
       <Navigation />
       <section className="general-margin">
         <section className="profile-top">
-          <div>
+          <div className="picture-username-profile">
             <div className="circle_image_container_profile">
               <img
                 className="circle_image"
@@ -63,17 +64,19 @@ export const ProfilePage = () => {
             </div>
             <div>
               <h3>{user.username}</h3>
-              <div>
-                <h3></h3>
-                <p>{filteredLength}</p>
+              <div className="trip-count">
+                <h3 className="yellow">{filteredLength}</h3>
+                <p className="yellow">Trips</p>
               </div>
             </div>
           </div>
-          <img src={Settings} alt="Edit your profile" />
+          <Link to="/editProfile">
+            <img src={Settings} alt="Edit your profile" />
+          </Link>
         </section>
         <section>
           {filteredTrips.map((trip) => (
-            <TripCard key={trip.id} trip={trip} />
+            <TripCardProfile key={trip.id} trip={trip} />
           ))}
         </section>
       </section>

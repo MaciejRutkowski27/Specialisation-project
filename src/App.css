@@ -17,6 +17,11 @@ body.dark-theme {
   --yellow: #f5ba41;
 }
 
+/* for yellow text */
+.yellow {
+  color: var(--yellow);
+}
+
 /*Animation styling */
 /* Container */
 .section {

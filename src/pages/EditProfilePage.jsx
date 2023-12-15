@@ -68,39 +68,41 @@ export const EditProfilePage = () => {
   return (
     <section className="page">
       <Navigation />
-      <h1>Profile</h1>
-      <LightMode />
-      <DarkMode />
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            name="name"
-            placeholder="Type name"
-          />
-        </label>
-        <label>
-          Image
-          <input
-            type="file"
-            className="file-input"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-          <img
-            className="picture"
-            src={picture}
-            alt="Choose"
-            onError={(event) => (event.target.src = Placeholder)}
-          />
-        </label>
-        <p className="text-error">{errorMessage}</p>
-        <button>Save User</button>
-      </form>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <section className="general-margin">
+        <h1>Profile</h1>
+        <LightMode />
+        <DarkMode />
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              name="name"
+              placeholder="Type name"
+            />
+          </label>
+          <label>
+            Image
+            <input
+              type="file"
+              className="file-input"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+            <img
+              className="picture"
+              src={picture}
+              alt="Choose"
+              onError={(event) => (event.target.src = Placeholder)}
+            />
+          </label>
+          <p className="text-error">{errorMessage}</p>
+          <button>Save User</button>
+        </form>
+        <button onClick={handleSignOut}>Sign Out</button>
+      </section>
     </section>
   );
 };
