@@ -7,7 +7,7 @@ import Close from "../assets/close.svg";
 import "./createPage.css";
 import ProgressBar from "../assets/progress3.svg";
 
-export const CreateActivitiesPage = () => {
+export const CreateActivitiesPage = ({ showLoader }) => {
   // created by Nina
 
   // all the states
@@ -17,6 +17,10 @@ export const CreateActivitiesPage = () => {
   const [activities, setActivities] = useState([]);
   const [dateArray, setDateArray] = useState([]);
   const [days, setDays] = useState();
+
+  useEffect(() => {
+    showLoader(false);
+  }, [showLoader]);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -116,6 +120,7 @@ export const CreateActivitiesPage = () => {
   };
 
   async function handleSubmit(event) {
+    showLoader(true); // show the loader
     event.preventDefault();
     const docRef = doc(tripsRef, tripId);
 
@@ -123,6 +128,7 @@ export const CreateActivitiesPage = () => {
     await updateDoc(docRef, {
       days: days,
     });
+    showLoader(false); // hide the loader
     navigate(`/trip/${tripId}`);
   }
 

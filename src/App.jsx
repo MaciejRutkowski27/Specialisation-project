@@ -15,8 +15,10 @@ import { CreateTagsPage } from "./pages/CreateTagsPage";
 import { CreateActivitiesPage } from "./pages/CreateActivitiesPage";
 import { TripPage } from "./pages/TripPage";
 import { EditProfilePage } from "./pages/EditProfilePage";
+import Loader from "./components/Loader";
 
 export default function App() {
+  const [showLoader, setShowLoader] = useState(true);
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); // start default value comes from localStorage
 
   useEffect(() => {
@@ -41,15 +43,21 @@ export default function App() {
   const privateRoutes = (
     <>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/create" element={<CreatePage />} />
+        <Route path="/" element={<HomePage showLoader={setShowLoader} />} />
+        <Route
+          path="/create"
+          element={<CreatePage showLoader={setShowLoader} />}
+        />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/editProfile" element={<EditProfilePage />} />
         <Route path="/map" element={<MapPage />} />
-        <Route path="/trips/tags/:tripId" element={<CreateTagsPage />} />
+        <Route
+          path="/trips/tags/:tripId"
+          element={<CreateTagsPage showLoader={setShowLoader} />}
+        />
         <Route
           path="/trips/activities/:tripId"
-          element={<CreateActivitiesPage />}
+          element={<CreateActivitiesPage showLoader={setShowLoader} />}
         />
         <Route path="/trip/:tripId" element={<TripPage />} />
         <Route path="*" element={<Navigate to="/" />} />
@@ -61,12 +69,23 @@ export default function App() {
   const publicRoutes = (
     <Routes>
       <Route path="/animation" element={<TripAnimation />} />
-      <Route path="/sign-in" element={<SignInPage />} />
-      <Route path="/sign-up" element={<SignUpPage />} />
+      <Route
+        path="/sign-in"
+        element={<SignInPage showLoader={setShowLoader} />}
+      />
+      <Route
+        path="/sign-up"
+        element={<SignUpPage showLoader={setShowLoader} />}
+      />
       <Route path="*" element={<Navigate to="/animation" />} />
     </Routes>
   );
 
   // if user is authenticated, show privateRoutes, else show publicRoutes
-  return <main>{isAuth ? privateRoutes : publicRoutes}</main>;
+  return (
+    <main>
+      {isAuth ? privateRoutes : publicRoutes}
+      {showLoader && <Loader />}
+    </main>
+  );
 }

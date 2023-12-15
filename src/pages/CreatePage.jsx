@@ -9,7 +9,7 @@ import "./createPage.css";
 import Placeholder from "../assets/placeholder.webp";
 import ProgressBar from "../assets/progress1.svg";
 
-export const CreatePage = () => {
+export const CreatePage = ({ showLoader }) => {
   // created by Nina
 
   const auth = getAuth();
@@ -26,6 +26,10 @@ export const CreatePage = () => {
   const [addedFriends, setAddedFriends] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [warningMessage, setWarningMessage] = useState("");
+
+  useEffect(() => {
+    showLoader(false);
+  }, [showLoader]);
 
   // url to access all the possible destinations
   const url =
@@ -63,6 +67,7 @@ export const CreatePage = () => {
 
   // creating the trip
   async function createTrip(newTrip) {
+    showLoader(true); // show the loader
     newTrip.createdAt = serverTimestamp(); // timestamp (now)
     newTrip.uid = auth.currentUser.uid;
 
@@ -73,6 +78,7 @@ export const CreatePage = () => {
     const newTripId = docRef.id;
 
     // Navigate to the new trip
+    showLoader(false); // hide the loader
     navigate(`/trips/tags/${newTripId}`);
   }
 

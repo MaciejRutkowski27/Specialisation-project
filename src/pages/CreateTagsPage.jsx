@@ -7,7 +7,7 @@ import Close from "../assets/close.svg";
 import "./createPage.css";
 import ProgressBar from "../assets/progress2.svg";
 
-export const CreateTagsPage = () => {
+export const CreateTagsPage = ({ showLoader }) => {
   // created by Nina
 
   const params = useParams();
@@ -17,6 +17,10 @@ export const CreateTagsPage = () => {
   // all the states
   const [tags, setTags] = useState([]);
   const [chosenTags, setChosenTags] = useState([]);
+
+  useEffect(() => {
+    showLoader(false);
+  }, [showLoader]);
 
   // getting all the tags
   useEffect(() => {
@@ -40,6 +44,7 @@ export const CreateTagsPage = () => {
   }
 
   async function saveTrip(event) {
+    showLoader(true); // show the loader
     event.preventDefault();
     const docRef = doc(tripsRef, tripId);
 
@@ -47,15 +52,18 @@ export const CreateTagsPage = () => {
     await updateDoc(docRef, {
       tags: chosenTags,
     });
+    showLoader(false); // hide the loader
     navigate(`/trips/activities/${tripId}`);
   }
 
   // deleting the trip itself
   async function deleteTrip() {
+    showLoader(true); // show the loader
     const confirmDelete = window.confirm("Do you want to delete this trip?");
     if (confirmDelete) {
       const docRef = doc(tripsRef, tripId);
       await deleteDoc(docRef);
+      showLoader(false); // hide the loader
       navigate("/");
     }
   }
