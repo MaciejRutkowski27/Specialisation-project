@@ -178,7 +178,10 @@ export const CreatePage = () => {
   }
 
   return (
-    <section className="general-margin" aria-labelledby="create-trip-heading">
+    <section
+      className="general-margin space-bottom"
+      aria-labelledby="create-trip-heading"
+    >
       <img
         onClick={handleCancel}
         src={Close}

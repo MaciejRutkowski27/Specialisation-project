@@ -2,6 +2,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
 }
 
 .circle_image_container_profile {
@@ -9,4 +11,36 @@
   height: 7rem;
   border-radius: 50%;
   overflow: hidden;
+  margin-right: 1rem;
+}
+
+.picture-username-profile {
+  display: flex;
+  align-items: center;
+}
+
+.trip-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--yellow);
+}
+
+.trip-card-profile {
+  margin-bottom: 0.7rem;
+}
+
+.trip-picture-profile {
+  width: 100%;
+  height: 20vh;
+  border-radius: 20px;
+}
+
+.small-nav {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.small-nav-button {
+  margin-right: 1rem;
 }

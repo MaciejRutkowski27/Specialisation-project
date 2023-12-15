@@ -17,6 +17,16 @@ body.dark-theme {
   --yellow: #f5ba41;
 }
 
+/* for yellow text */
+.yellow {
+  color: var(--yellow);
+}
+
+/* because of the fixed navigation, so we see the content */
+.space-bottom {
+  margin-bottom: 15vh;
+}
+
 /*Animation styling */
 /* Container */
 .section {
