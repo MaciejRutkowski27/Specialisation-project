@@ -1,6 +1,6 @@
 import "./map.css";
 import { useState, useEffect } from "react";
-import {onSnapshot } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import { countriesRef } from "../config/Firebase";
 
 const Popup = ({ position, country, onClose }) => {
@@ -25,12 +25,13 @@ const Popup = ({ position, country, onClose }) => {
   );
 };
 export default function WorldMap() {
-const [selectedPaths, setSelectedPaths] = useState([]);
+  const [selectedPaths, setSelectedPaths] = useState([]);
   const [popupInfo, setPopupInfo] = useState(null);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [countries, setCountries] = useState([]);
   const [visitedCountries, setVisitedCountries] = useState([]);
   
+
   useEffect(() => {
     onSnapshot(countriesRef, (data) => {
       const countriesData = data.docs.map((doc) => ({
@@ -41,66 +42,48 @@ const [selectedPaths, setSelectedPaths] = useState([]);
     });
   }, []);
 
-const handleClick = (event) => {
-  const clickedPathId = event.target.id;
+  const handleClick = (event) => {
+    const clickedPathId = event.target.id;
 
-  // Find the selected country based on the clicked path id
-  const selectedCountry = countries.find(
-    (country) => country.id === clickedPathId
-  );
-   if (selectedCountry) {
-     const rect = event.target.getBoundingClientRect();
-     const position = {
-       x: rect.left + window.scrollX,
-       y: rect.top + window.scrollY, // Adjust this value based on your design
-     };
+    // Find the selected country based on the clicked path id
+    const selectedCountry = countries.find(
+      (country) => country.id === clickedPathId
+    );
+    if (selectedCountry) {
+      const rect = event.target.getBoundingClientRect();
+      const position = {
+        x: rect.left + window.scrollX,
+        y: rect.top + window.scrollY, // Adjust this value based on your design
+      };
 
-     setPopupInfo(selectedCountry);
-     setPopupPosition(position);
-   }
+      setPopupInfo(selectedCountry);
+      setPopupPosition(position);
+    }
 
-  // Update the selected country information
-  // setSelectedCountry(selectedCountry);
-  setVisitedCountries((prevVisitedCountries) =>
-    isPathSelected
-      ? prevVisitedCountries.filter((country) => country.id !== clickedPathId)
-      : [...prevVisitedCountries, selectedCountry]
-  );
+    // Update the selected country information
+    // setSelectedCountry(selectedCountry);
+    setVisitedCountries((prevVisitedCountries) =>
+      isPathSelected
+        ? prevVisitedCountries.filter((country) => country.id !== clickedPathId)
+        : [...prevVisitedCountries, selectedCountry]
+    );
 
-  // Check if the clicked path is already selected
-  const isPathSelected = selectedPaths.includes(clickedPathId);
+    // Check if the clicked path is already selected
+    const isPathSelected = selectedPaths.includes(clickedPathId);
 
-  // Update the selected paths array
+    // Update the selected paths array
 
-  setSelectedPaths((prevSelectedPaths) =>
-    isPathSelected
-      ? prevSelectedPaths.filter((path) => path !== clickedPathId)
-      : [...prevSelectedPaths, clickedPathId]
-  );
-};
- const closePopup = () => {
-   setPopupInfo(null);
- };
+    setSelectedPaths((prevSelectedPaths) =>
+      isPathSelected
+        ? prevSelectedPaths.filter((path) => path !== clickedPathId)
+        : [...prevSelectedPaths, clickedPathId]
+    );
+  };
+  const closePopup = () => {
+    setPopupInfo(null);
+  };
   return (
     <>
-      <div className="mapTop">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/Screenshot%202023-12-01%20at%2013.19%201.png?alt=media&token=5831f632-e649-42cf-9adc-6464614ab200"
-          alt="tripsimple"
-        />
-        <div className="topicons">
-          <img
-            id="searchicon"
-            src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/search-normal.svg?alt=media&token=70f159f9-a9b3-465c-ba97-f12b750433c6"
-            alt="searchicon"
-          />
-          <img
-            id="profileicon"
-            src="https://firebasestorage.googleapis.com/v0/b/trip-simple-20c18.appspot.com/o/yakko.PNG?alt=media&token=c6c20fa2-3eeb-4f41-b3a3-e89d178d0644"
-            alt="profileicon"
-          />
-        </div>
-      </div>
       <section className="ag-canvas">
         <svg
           className="ag-canvas_svg"
@@ -1729,4 +1712,4 @@ const handleClick = (event) => {
       )}
     </>
   );
-          }
+}

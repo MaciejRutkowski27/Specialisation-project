@@ -13,9 +13,10 @@ body {
 
   color: #d3ddef;
 }
-svg > path:hover {
-  fill: yellow;
+.popup {
+  position:relative;
 }
+
 
 
 .ag-canvas {
@@ -43,8 +44,8 @@ svg > path:hover {
   margin-left: 1rem;
 }
 .ag-canvas_svg path {
-  fill: #FFFBDB;
-  fill-opacity: 1;
+  /* fill: #FFFBDB;
+  fill-opacity: 1; */
   stroke: #21252b;
   stroke-opacity: 1;
   stroke-width: 0.5;
@@ -117,21 +118,14 @@ color: #FFFBDB;
 }
 #popup-top {
   display: inline-flex;
-  gap: 20px;
+  gap: 10px;
   justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .popup-flag {
   height: 20px;
   width: 30px;
-}
-#popup-button {
-  height: 30px;
-  width: 40px;
-  margin-top: 20px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 @media screen and (max-width: 767px) {
   .ag-canvas {
@@ -145,4 +139,35 @@ color: #FFFBDB;
     max-height: calc(100% - 6rem);
     margin-left: 0;
   }
+}
+
+
+.popup {
+  background-color: black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+}
+.button-container {
+  margin-top: 10px;
+  width: 100%;
+}
+.popup-button {
+  margin-bottom: 10px;
+  height: 30px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-content {
+  font-size: 8px;
+  color: #21252b;
+  text-align: center;
+}
+#popuptitle {
+  color: #FFFBDB;
 }
