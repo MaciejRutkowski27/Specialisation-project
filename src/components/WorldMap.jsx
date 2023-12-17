@@ -1938,7 +1938,7 @@ const handleButtonClick = (buttonText) => {
         </div>
         {isPopupVisible && (
           <div
-            className="popup"
+            className="map-popup"
             id="popup"
             style={{
               position: "absolute",
@@ -1961,6 +1961,9 @@ const handleButtonClick = (buttonText) => {
               onClick={() => handleButtonClick("Visited")}
             >
               <p className="button-content">Add to visited</p>
+            </button>
+            <button className="popup-button" onClick={hidePopup}>
+              <p className="button-content">Close</p>
             </button>
           </div>
         )}
