@@ -22,7 +22,6 @@ export const PopUp = ({ onClose, friends, tripId, author }) => {
 
         // excluding the user creating the trip
         .filter((user) => user.id !== author);
-      console.log(author);
 
       setAllFriends(usersData);
 
