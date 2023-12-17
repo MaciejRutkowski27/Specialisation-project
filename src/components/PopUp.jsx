@@ -74,7 +74,7 @@ export const PopUp = ({ onClose, friends, tripId, author }) => {
     <div className="popup">
       <h3>Friends you can add</h3>
       {allFriends.map((friend) => (
-        <div key={friend.id} className="friend-container">
+        <div key={friend.id} className="friend-container-edit">
           <section className="little-friend-container">
             <div className="circle_image_container friend-image">
               <img

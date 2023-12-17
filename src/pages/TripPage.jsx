@@ -156,7 +156,7 @@ export const TripPage = () => {
         </div>
         {/* Conditionally render the pop-up */}
         {isDeleteOpen && (
-          <div className="overlay" onClick={handleClosePopup}>
+          <div className="overlay">
             <DeletePop
               tripId={tripId}
               author={author}
@@ -165,7 +165,7 @@ export const TripPage = () => {
           </div>
         )}
         {isPopupOpen && (
-          <div className="overlay" onClick={handleClosePopup}>
+          <div className="overlay">
             <PopUp
               tripId={tripId}
               friends={friends}
