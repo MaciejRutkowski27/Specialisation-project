@@ -10,6 +10,8 @@ import ProgressBar from "../assets/progress2.svg";
 export const CreateTagsPage = () => {
   // created by Nina
 
+  // page for adding tags to the trip
+
   const params = useParams();
   const navigate = useNavigate();
   const tripId = params.tripId;

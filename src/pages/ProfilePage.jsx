@@ -13,6 +13,8 @@ import Settings from "../assets/settings_icon.svg";
 export const ProfilePage = () => {
   // created by Nina
 
+  // here the users can see their profile and trips they created or are participating in
+
   // all the states
   const [user, setUser] = useState({});
   const [userId, setUserId] = useState();

@@ -12,6 +12,8 @@ import { TripCard } from "../components/TripCard";
 export const HomePage = () => {
   // created by Nina
 
+  // the discover page where users can go through already existing trips
+
   const [trips, setTrips] = useState([]);
 
   // getting the trip data

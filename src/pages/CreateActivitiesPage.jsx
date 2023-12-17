@@ -10,6 +10,8 @@ import ProgressBar from "../assets/progress3.svg";
 export const CreateActivitiesPage = () => {
   // created by Nina
 
+  // page for adding the activities to the trip
+
   // all the states
   const [trip, setTrip] = useState();
   const [tripTags, setTripTags] = useState([]);

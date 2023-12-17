@@ -13,6 +13,8 @@ import "./profile.css";
 export const EditProfilePage = () => {
   // created by Nina
 
+  // users can edit their profiles here
+
   const navigate = useNavigate();
 
   // all the states
