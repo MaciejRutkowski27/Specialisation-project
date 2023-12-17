@@ -29,6 +29,7 @@ export default function MapComponent() {
         setUserId(auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
         if (userData) {
+          console.log(userData);
           setVisitedCountries(userData.visited);
           setBucketlist(userData.bucket);
         }
@@ -100,12 +101,11 @@ export default function MapComponent() {
       visited: visitedCountries,
       bucket: bucketlist,
     });
-  }, [userId, visitedCountries, bucketlist]);
+  }, [visitedCountries, bucketlist, userId]);
 
-  // added
   useEffect(() => {
     saveDataToDatabase();
-  }, [saveDataToDatabase]);
+  }, [visitedCountries, bucketlist, userId, saveDataToDatabase]);
 
   const handleButtonClick = (buttonText) => {
     const path = document.getElementById(pathId);
