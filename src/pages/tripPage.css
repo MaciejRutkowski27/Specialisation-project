@@ -31,3 +31,9 @@
   height: 25vh;
   border-radius: 20px;
 }
+
+.popup {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}

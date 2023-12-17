@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import { useState, useEffect } from "react";
-import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { tripsRef } from "../config/Firebase";
 import { Link } from "react-router-dom";
 import { Navigation } from "../components/Navigation";
@@ -9,11 +10,16 @@ import Placeholder from "../assets/placeholder.webp";
 import HomeFilled from "../assets/filled_home.svg";
 import ProfileFilled from "../assets/profile_icon.svg";
 import More from "../assets/more-square_icon.svg";
+import Plus from "../assets/plus.svg";
 import "./tripPage.css";
 import { ActivityCard } from "../components/ActivityCard";
+import { PopUp } from "../components/PopUp";
+import { DeletePop } from "../components/DeletePop";
 
 export const TripPage = () => {
   // created by Nina
+
+  const auth = getAuth();
 
   // states
   const [name, setName] = useState("");
@@ -24,6 +30,10 @@ export const TripPage = () => {
   const [friends, setFriends] = useState([]);
   const [picture, setPicture] = useState("");
   const [activities, setActivities] = useState([]);
+  const [author, setAuthor] = useState("");
+  const [userId, setUserId] = useState("");
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const [isDeleteOpen, setDeleteOpen] = useState(false);
 
   const params = useParams();
   const tripId = params.tripId;
@@ -40,6 +50,7 @@ export const TripPage = () => {
       setStartDate(docData.data().startDate);
       setEndDate(docData.data().endDate);
       setFriends(docData.data().addedFriends);
+      setAuthor(docData.data().uid);
       if (docData.data().picture) {
         setPicture(docData.data().picture);
       } else {
@@ -49,6 +60,34 @@ export const TripPage = () => {
 
     getTrip();
   }, [tripId]);
+
+  // getting the user ID to check if they are eligible to update
+  useEffect(() => {
+    async function getUser() {
+      if (auth.currentUser) {
+        setUserId(auth.currentUser.uid);
+      }
+    }
+    getUser();
+  }, [auth.currentUser]);
+
+  // pop up of edit
+  const handlePlusClick = () => {
+    setPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setPopupOpen(false);
+  };
+
+  // pop up of delete
+  const handleDeleteClick = () => {
+    setDeleteOpen(true);
+  };
+
+  const handleDeletePopup = () => {
+    setDeleteOpen(false);
+  };
 
   useEffect(() => {
     async function getActivities() {
@@ -106,8 +145,22 @@ export const TripPage = () => {
               <img src={ProfileFilled} alt="Go to your profile page" />
             </Link>
           </div>
-          <img src={More} alt="Settings of the trip" />
+          {(userId === author ||
+            friends.some((friend) => friend.id === userId)) && (
+            <img
+              onClick={handleDeleteClick}
+              src={More}
+              alt="Settings of the trip"
+            />
+          )}
         </div>
+        {isDeleteOpen && (
+          <DeletePop
+            tripId={tripId}
+            author={author}
+            onClose={handleDeletePopup}
+          />
+        )}
       </section>
       <section className="general-margin">
         <h1>{name}</h1>
@@ -124,7 +177,20 @@ export const TripPage = () => {
               />
             </div>
           ))}
+          {(userId === author ||
+            friends.some((friend) => friend.id === userId)) && (
+            <img src={Plus} alt="Add a friend" onClick={handlePlusClick} />
+          )}
         </section>
+        {/* Conditionally render the pop-up */}
+        {isPopupOpen && (
+          <PopUp
+            tripId={tripId}
+            friends={friends}
+            onClose={handleClosePopup}
+            author={author}
+          />
+        )}
         <div>
           {Object.entries(resultDict).map(([date, event]) => (
             <div key={date}>
