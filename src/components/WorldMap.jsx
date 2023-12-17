@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { onSnapshot, doc, getDoc, updateDoc } from "firebase/firestore";
 import { countriesRef, usersRef } from "../config/Firebase";
@@ -11,7 +11,7 @@ export default function MapComponent() {
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [countries, setCountries] = useState([]);
   const [visitedCountries, setVisitedCountries] = useState([]);
-  const [bucketlist, setBucketlist] = useState([]);
+  const [bucketList, setBucketList] = useState([]);
   const [selectedPaths, setSelectedPaths] = useState([]);
   const [popupImage, setPopupImage] = useState("");
 
@@ -31,7 +31,7 @@ export default function MapComponent() {
         if (userData) {
           console.log(userData);
           setVisitedCountries(userData.visited);
-          setBucketlist(userData.bucket);
+          setBucketList(userData.bucket);
         }
       }
     }
@@ -92,20 +92,18 @@ export default function MapComponent() {
     showPopup(event);
   };
 
-  // added
-  const saveDataToDatabase = useCallback(async () => {
+  async function saveDataToDatabase() {
     const docRef = doc(usersRef, userId);
+    console.log(visitedCountries);
+    console.log(bucketList);
 
-    // Update the user with the visitedCountries and bucketList arrays
+    // Update the trip with the days
     await updateDoc(docRef, {
       visited: visitedCountries,
-      bucket: bucketlist,
+      bucket: bucketList,
     });
-  }, [visitedCountries, bucketlist, userId]);
-
-  useEffect(() => {
-    saveDataToDatabase();
-  }, [visitedCountries, bucketlist, userId, saveDataToDatabase]);
+  }
+  // added
 
   const handleButtonClick = (buttonText) => {
     const path = document.getElementById(pathId);
@@ -122,15 +120,15 @@ export default function MapComponent() {
 
       // Check if the button was clicked again
       const isButtonClickedAgain =
-        buttonText === "Bucketlist"
-          ? isCountryInState(selectedCountry, bucketlist)
+        buttonText === "BucketList"
+          ? isCountryInState(selectedCountry, bucketList)
           : isCountryInState(selectedCountry, visitedCountries);
 
       if (isButtonClickedAgain) {
         // Reset the path color and remove the country from both states
         path.setAttribute("fill", ""); // Set it to the default color or remove the attribute for SVGs
-        setBucketlist((prevBucketlist) =>
-          prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+        setBucketList((prevBucketList) =>
+          prevBucketList.filter((c) => c.id !== selectedCountry.id)
         );
         setVisitedCountries((prevVisitedCountries) =>
           prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
@@ -139,15 +137,15 @@ export default function MapComponent() {
         // Change path fill color based on the buttonText
         path.setAttribute(
           "fill",
-          buttonText === "Bucketlist" ? "red" : "green"
+          buttonText === "BucketList" ? "red" : "green"
         );
 
         // Update the appropriate state based on buttonText
-        if (buttonText === "Bucketlist") {
-          setBucketlist((prevBucketlist) =>
-            isCountryInState(selectedCountry, prevBucketlist)
-              ? prevBucketlist.filter((c) => c.id !== selectedCountry.id)
-              : [...prevBucketlist, selectedCountry]
+        if (buttonText === "BucketList") {
+          setBucketList((prevBucketList) =>
+            isCountryInState(selectedCountry, prevBucketList)
+              ? prevBucketList.filter((c) => c.id !== selectedCountry.id)
+              : [...prevBucketList, selectedCountry]
           );
           setVisitedCountries((prevVisitedCountries) =>
             prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
@@ -158,8 +156,8 @@ export default function MapComponent() {
               ? prevVisitedCountries.filter((c) => c.id !== selectedCountry.id)
               : [...prevVisitedCountries, selectedCountry]
           );
-          setBucketlist((prevBucketlist) =>
-            prevBucketlist.filter((c) => c.id !== selectedCountry.id)
+          setBucketList((prevBucketList) =>
+            prevBucketList.filter((c) => c.id !== selectedCountry.id)
           );
         }
       }
@@ -167,6 +165,7 @@ export default function MapComponent() {
       console.error(`Path with ID ${pathId} not found.`);
     }
 
+    console.log(bucketList);
     // added
     saveDataToDatabase();
     hidePopup();
@@ -1952,7 +1951,7 @@ export default function MapComponent() {
         <div className="countrylists">
           <span className="bucketcontent">
             <p className="undermap">Bucket list</p>
-            {bucketlist.map((bucketItem, index) => (
+            {bucketList.map((bucketItem, index) => (
               <div key={index} className="bucket-item">
                 {bucketItem.flag && (
                   <img className="flag" src={bucketItem.flag} alt="" />
@@ -1997,7 +1996,7 @@ export default function MapComponent() {
             </div>
             <button
               className="popup-button"
-              onClick={() => handleButtonClick("Bucketlist")}
+              onClick={() => handleButtonClick("BucketList")}
             >
               <p className="button-content">Add to bucket list</p>
             </button>
