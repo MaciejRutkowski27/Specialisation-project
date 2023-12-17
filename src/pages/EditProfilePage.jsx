@@ -27,8 +27,8 @@ export const EditProfilePage = () => {
         const docRef = doc(usersRef, auth.currentUser.uid);
         const userData = (await getDoc(docRef)).data();
         if (userData) {
-          setName(userData.name);
-          setPicture(userData.image || Placeholder);
+          setName(userData.username);
+          setPicture(userData.picture || Placeholder);
         }
       }
     }
@@ -39,7 +39,7 @@ export const EditProfilePage = () => {
     event.preventDefault();
 
     const userToUpdate = {
-      name: name,
+      username: name,
       email: email,
       picture: picture,
     };
@@ -81,6 +81,7 @@ export const EditProfilePage = () => {
           <label>
             Name
             <input
+              className="field"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
