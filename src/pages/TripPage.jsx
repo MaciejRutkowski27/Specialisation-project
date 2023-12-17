@@ -154,12 +154,25 @@ export const TripPage = () => {
             />
           )}
         </div>
+        {/* Conditionally render the pop-up */}
         {isDeleteOpen && (
-          <DeletePop
-            tripId={tripId}
-            author={author}
-            onClose={handleDeletePopup}
-          />
+          <div className="overlay" onClick={handleClosePopup}>
+            <DeletePop
+              tripId={tripId}
+              author={author}
+              onClose={handleDeletePopup}
+            />
+          </div>
+        )}
+        {isPopupOpen && (
+          <div className="overlay" onClick={handleClosePopup}>
+            <PopUp
+              tripId={tripId}
+              friends={friends}
+              onClose={handleClosePopup}
+              author={author}
+            />
+          </div>
         )}
       </section>
       <section className="general-margin">
@@ -182,15 +195,6 @@ export const TripPage = () => {
             <img src={Plus} alt="Add a friend" onClick={handlePlusClick} />
           )}
         </section>
-        {/* Conditionally render the pop-up */}
-        {isPopupOpen && (
-          <PopUp
-            tripId={tripId}
-            friends={friends}
-            onClose={handleClosePopup}
-            author={author}
-          />
-        )}
         <div>
           {Object.entries(resultDict).map(([date, event]) => (
             <div key={date}>
