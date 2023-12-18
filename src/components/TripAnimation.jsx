@@ -1,3 +1,6 @@
+// created by Maciej
+
+
 import { useState, useEffect } from "react";
 import DelayedPageTransition from "./transition";
 export const TripAnimation = () => {

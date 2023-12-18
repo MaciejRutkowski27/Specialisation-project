@@ -1,3 +1,6 @@
+// created by Maciej
+
+
 import { useState, useEffect } from "react";
 import { onSnapshot } from "firebase/firestore";
 import { countriesRef } from "../config/Firebase";

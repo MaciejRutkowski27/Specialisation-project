@@ -1,3 +1,5 @@
+// created by Maciej
+
 import { Navigation } from "../components/Navigation";
 import MapComponent from "../components/WorldMap";
 export const MapPage = () => {

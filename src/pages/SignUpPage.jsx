@@ -6,7 +6,7 @@ import { usersRef } from "../config/Firebase";
 import "./sign.css";
 
 export const SignUpPage = () => {
-  // created by Maciek and Nina
+  // created by Maciej and Nina
 
   const [username, setUserName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
