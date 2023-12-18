@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
 import { countriesRef, usersRef } from "../config/Firebase";
 import "./map.css";
@@ -93,6 +93,19 @@ export default function MapComponent() {
     showPopup(event);
   };
 
+  async function saveDataToDatabase() {
+    const docRef = doc(usersRef, userId);
+    console.log(visitedCountries);
+    console.log(bucketlist);
+
+    // Update the trip with the days
+    await updateDoc(docRef, {
+      visited: visitedCountries,
+      bucket: bucketlist,
+    });
+  }
+  // added
+
   const handleButtonClick = (buttonText) => {
     const path = document.getElementById(pathId);
 
@@ -153,6 +166,7 @@ export default function MapComponent() {
       console.error(`Path with ID ${pathId} not found.`);
     }
 
+    saveDataToDatabase();
     hidePopup();
   };
 
