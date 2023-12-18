@@ -1,12 +1,9 @@
 // created by Maciej
 
-
 import { useState, useEffect } from "react";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
-import { countriesRef, usersRef } from "../config/Firebase";
+import { countriesRef } from "../config/Firebase";
 import "./map.css";
-import { getAuth } from "firebase/auth";
 
 export default function MapComponent() {
   const [popupTitle, setPopupTitle] = useState("");
@@ -18,29 +15,6 @@ export default function MapComponent() {
   const [bucketlist, setBucketlist] = useState([]);
   const [selectedPaths, setSelectedPaths] = useState([]);
   const [popupImage, setPopupImage] = useState("");
-
-  // added
-  const [userId, setUserId] = useState();
-
-  // added
-  const auth = getAuth();
-
-  // getting the information about the user - added
-  useEffect(() => {
-    async function getUser() {
-      if (auth.currentUser) {
-        const docRef = doc(usersRef, auth.currentUser.uid);
-        setUserId(auth.currentUser.uid);
-        const userData = (await getDoc(docRef)).data();
-        if (userData) {
-          console.log(userData);
-          setVisitedCountries(userData.visited);
-          setBucketlist(userData.bucket);
-        }
-      }
-    }
-    getUser();
-  }, [auth.currentUser]);
 
   useEffect(() => {
     onSnapshot(countriesRef, (data) => {
@@ -95,19 +69,6 @@ export default function MapComponent() {
     handleClick(event);
     showPopup(event);
   };
-
-  async function saveDataToDatabase() {
-    const docRef = doc(usersRef, userId);
-    console.log(visitedCountries);
-    console.log(bucketlist);
-
-    // Update the trip with the days
-    await updateDoc(docRef, {
-      visited: visitedCountries,
-      bucket: bucketlist,
-    });
-  }
-  // added
 
   const handleButtonClick = (buttonText) => {
     const path = document.getElementById(pathId);
@@ -169,7 +130,6 @@ export default function MapComponent() {
       console.error(`Path with ID ${pathId} not found.`);
     }
 
-    saveDataToDatabase();
     hidePopup();
   };
 
